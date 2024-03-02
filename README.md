@@ -7,6 +7,38 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## cara pake git + github 
+Intall git (https://git-scm.com/downloads).
+cara clone: "git clone https://github.com/JavierMatt/SOP_Management_System.git"
+kalo mau tambah fitur/update
+
+1. pull (ambil update dari commit): "git pull"
+2. bikin branch baru: "git branch nama-branch"
+3. pindah branch: "git switch nama-branch"
+4. code dan commit
+
+cara commit:
+1. "git add ." '
+2. git commit -m "commit-message"'
+3. "git push origin nama-branch"
+4. ganti branch ke main, dan git pull
+
+## Requirement sistem
+Composer atau Laravel 10, yang di install dan bisa running di komputer kamu. Guide install laravel ada disini (https://laravel.com/docs/10.x/installation). PHP 8.1 keatas MySQL Local server untuk running database, Misalnya MAMP, Apache atau WAMP (XAMPP untuk Windows)
+
+## Setup
+1. karena code di repo ini tidak ada file .env dan folder "vendor", jadi kamu perlu generate file dan folder tersebut dengan bikin project baru di laravel. dengan perintah "laravel new nama-project-baru" atau jika pake composer "composer create-project laravel/laravel nama-project-baru"
+3. clone repo ini ke lokal komputer kamu, kemudian copy file .env dan folder "vendor" ke folder tujuan repo.
+4. Edit .env dan arahkan ke database yang ada dan running, pada lokal kita
+5. buat database baru pada MySQL. kosongkan saja data dan table nya karena kita akan migrasi dari kode laravel
+6. jalankan perintah 'composer install' untuk install requirement-requirement dari code di repo
+7. jalankan perintah 'composer dump-autoload' untuk perbarui file file di "vendor"
+8. jalankan 'php artisan migrate:refresh' untuk membuat tabel-tabel yang diperlukan kedalam database
+9. apabila berhasil, kita bisa menjalankan 'php artisan migrate:status' akan terlihat tabel-tabel yang sudah diexpor kedalam database
+10. jalankan 'php artisan serve' untuk menjalankan app
+11. buka http://localhost:8000 (atau sesuakian dengan port di .env)
+12. jika muncul website di localhost di browser, berarti setup sudah berhasil
+    
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
