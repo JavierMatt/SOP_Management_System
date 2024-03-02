@@ -18,8 +18,8 @@ kalo mau tambah fitur/update
 4. code dan commit
 
 cara commit:
-1. "git add ." '
-2. git commit -m "commit-message"'
+1. "git add ."
+2. "git commit -m "commit-message"'
 3. "git push origin nama-branch"
 4. ganti branch ke main, dan git pull
 
