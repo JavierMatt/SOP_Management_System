@@ -20,6 +20,7 @@ use App\Http\Controllers\FileController;
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
 Route::get('/register', function () {
     return view('register');
 })->name('register');
@@ -31,8 +32,8 @@ Route::post('/register', [UserController::class, 'userRegister']);
 
 // Admin user page route (dijaga kalo iseng hehe)
 Route::get('/adminpage', [FileController::class, 'showFileAdmin'])->middleware('admin')->name('adminpage');
-Route::get('/userpage', [UserController::class, 'showFileUser'])->middleware('user')->name('userpage');
+Route::get('/userpage', [FileController::class, 'showFileUser'])->middleware('user')->name('userpage');
 
+// User Change Password route
 
-
-
+Route::get('/changePassword', [UserController::class, 'userChangePassword']);

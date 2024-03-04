@@ -48,4 +48,9 @@ class Usercontroller extends Controller
         // Redirect or return a response
         return redirect()->route('login')->with('success', 'User created successfully');
     }
+
+    public function userChangePassword() {
+        return view("userChangePassword");
+    }
+
 }
