@@ -13,7 +13,7 @@ Route::get('/login', function () {
 })->name('login');
 Route::get('/register', function () {
     return view('register');
-})->name('register');
+})->middleware('admin')->name('register');
 
 // User login route
 Route::post('/login', [UserController::class, 'userLogin']);

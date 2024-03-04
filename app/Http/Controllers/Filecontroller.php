@@ -55,7 +55,7 @@ class Filecontroller extends Controller
     
     $file->save();
 
-    return redirect()->back()->with('success', 'File uploaded successfully');
+    return redirect()->route('adminpage')->with('success', 'File uploaded successfully');
 }
     
 
