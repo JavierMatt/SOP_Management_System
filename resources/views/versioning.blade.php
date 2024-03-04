@@ -6,11 +6,10 @@
     <div class="row">
         <div class="col-md-12">
             <h2>File: {{ $pdfFiles->first()->filename }}</h2>
-            @if ($pdfFiles->first()->category)
                 <h3>Department: {{ $pdfFiles->first()->category->dept }}</h3>
-            @else
-                <p>Department information not available.</p>
-            @endif
+                
+                <a href="{{ route('toUpdate', ['fileid' => $pdfFiles->first()->fileID]) }}" class="btn btn-primary">Update</a>
+
             <hr>
         </div>
     </div>
@@ -30,7 +29,7 @@
                                
                                
                                     <p class="card-text">Username: {{ $pdfFile->user->username }}</p>
-                               
+                                    <p class="card-text">Size: {{ $pdfFile->size }}</p>
                                 <a href="{{ route('file.download', ['fileid' => $pdfFile->fileID]) }}" class="btn btn-success">Download PDF</a>
                             </div>
                         </div>

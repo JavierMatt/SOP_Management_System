@@ -86,8 +86,42 @@ public function toVersioning($fileid)
     // Pass the retrieved files to the 'versioning' view
     return view('versioning', compact('pdfFiles'));
 }
+public function update(Request $request, $fileid)
+{
+    // dd($request);
+    // return $request ->file('path')->store('pdf-SOP');
+    $validatedData = $request->validate([
+        'filename' => 'required',
+        'category' => 'required',
+        'version' => 'required|integer',
+        'path' => 'required|file|mimes:pdf|max:3072', // Max size 3MB (3072 KB)
+    ]);
+
+    $file = new File();
+    $file->filename = $validatedData['filename'];
+    $file->catid = $validatedData['category'];
+    $file->version = $validatedData['version'];
+
+  
+    $validatedData['path'] = $request->file('path')->store('pdf-SOP');
+
+    $size = Storage::size($validatedData['path']);
+    $file->path = $validatedData['path'];
+    $file->size = $size;
+    $file->userid = auth()->id(); 
+    $file->date = now(); 
+    
+    $file->save();
+    return redirect()->route('toversioning', ['fileid' => $fileid])->with('success', 'File uploaded successfully');
 
 
+    
+}
+public function toUpdate($fileid)
+{
+    $pdfFile = File::findOrFail($fileid);
+    return view('update', compact('pdfFile'));
+}
     }
 
 
