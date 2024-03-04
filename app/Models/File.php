@@ -14,13 +14,14 @@ class File extends Model
     ];
     protected $primaryKey = 'fileID';
 
-    public function user(): BelongsTo
+    public function category()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Category::class, 'catid');
     }
 
-    public function category(): BelongsTo
+    public function user()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(User::class, 'userid');
     }
+    
 }

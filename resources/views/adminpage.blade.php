@@ -15,9 +15,10 @@
                     <p class="card-text">Version: {{ $pdfFile->version }}</p>
                    
                     <a href="{{ route('file.download', ['fileid' => $pdfFile->fileID]) }}" class="btn btn-success">Download PDF</a>
+                    <a href="{{ route('toversioning', ['fileid' => $pdfFile->fileID]) }}" class="btn btn-success">View other version</a>
 
 
-
+                    
                 </div>
             </div>
         </div>

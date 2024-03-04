@@ -24,10 +24,13 @@ Route::get('/adminpage', [FileController::class, 'showFileAdmin'])->middleware('
 Route::get('/userpage', [FileController::class, 'showFileUser'])->middleware('user')->name('userpage');
 
 // Upload route
-Route::get('/upload', [FileController::class, 'showcategory'])->name('upload');
-Route::post('/upload', [FileController::class, 'upload']);
+Route::get('/upload', [FileController::class, 'showcategory'])->middleware('admin')->name('upload');
+Route::post('/upload', [FileController::class, 'upload'])->middleware('admin');
 
 // Route::get('/download{fileid}', [FileController::class, 'downloadfile'])->name('download');
 Route::get('/download/{fileid}', [FileController::class, 'download'])->name('file.download');
+// Route::get('/toversioning/{filename}/{catid}',[FileController::class,'toVersioning'])->name('toversioning');
+
+Route::get('/versioning/{fileid}',[FileController::class,'toVersioning'])->name('toversioning');
 
 

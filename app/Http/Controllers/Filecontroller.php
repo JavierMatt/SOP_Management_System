@@ -72,6 +72,23 @@ class Filecontroller extends Controller
     $filePath = public_path('storage/' . $pdfFile->path); 
     return response()->download($filePath);
 }
+
+public function toVersioning($fileid)
+{
+    // Retrieve the file based on the fileID with eager loading of category and user
+    $pdfFile = File::with('category', 'user')->findOrFail($fileid);
+
+    // Retrieve all files with the same filename and catid
+    $pdfFiles = File::where('filename', $pdfFile->filename)
+                    ->where('catid', $pdfFile->catid)
+                    ->get();
+    
+    // Pass the retrieved files to the 'versioning' view
+    return view('versioning', compact('pdfFiles'));
+}
+
+
     }
+
 
 
