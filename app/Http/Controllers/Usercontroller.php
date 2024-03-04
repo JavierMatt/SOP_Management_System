@@ -1,15 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Category; 
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\Storage;
 class Usercontroller extends Controller
-{
+{   
+    public function toLogin()
+    {
+        return view('login');
+    }
+    public function toRegister()
+    {
+        return view('register');
+    }
     public function userLogin(Request $request)
     {
         $request->validate([
