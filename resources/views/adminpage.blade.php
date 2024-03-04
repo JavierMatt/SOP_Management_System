@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <aside id="default-sidebar" class="fixed left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+    <aside id="default-sidebar" class="absolute left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
         <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
             <span class="sr-only">Open sidebar</span>
             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -25,13 +25,13 @@
                             </div>
                         </div>
             
-                        <div id="menu" class="flex flex-col space-y-2">
+                        <div id="{{ url('/adminpage') }}" class="flex flex-col space-y-2">
                             <a href="" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white  rounded-md transition duration-150 ease-in-out">
                                 <i class="fas fa-house" style="color: #ffffff;"></i>
                                 <span class="">Dashboard</span>
                             </a>
                         
-                            <a href="" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
+                            <a href="{{ url('/userManagement') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
                                 <i class="fa-solid fa-user" style="color: #ffffff;"></i>
                                 <span class="">User Management</span>
                             </a>
@@ -82,8 +82,8 @@
                     </script>
 
                     <div class="relative w-full">
-                        <input type="search" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-black bg-white rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 " placeholder="Search Mockups, Logos, Design Templates..." required />
-                        <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-gray-300 rounded-e-lg border border-gray-300">
+                        <input type="search" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-black bg-white rounded-e-lg border-s-greyborder-s-2 border border-black " placeholder="Search Mockups, Logos, Design Templates..." required />
+                        <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-black rounded-e-lg border border-black">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
@@ -132,7 +132,8 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="#">
-                                <i class="fa-solid fa-download" style="color: #000000;"></i>
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i>
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
                             </a>
                         </td>
                     </tr>
@@ -153,7 +154,8 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="#">
-                                <i class="fa-solid fa-download" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
                             </a>
                         </td> 
                     </tr>
@@ -173,9 +175,10 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="#">
-                                <i class="fa-solid fa-download" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
                             </a>
-                        </td> 
+                        </td>
                     </tr>
 
                     <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
@@ -193,9 +196,10 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="#">
-                                <i class="fa-solid fa-download" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
                             </a>
-                        </td> 
+                        </td>
                     </tr>
 
                     <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
@@ -213,18 +217,124 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="#">
-                                <i class="fa-solid fa-download" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
                             </a>
-                        </td> 
+                        </td>
                     </tr>
+
+                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                        <th scope="row" class="px-6 py-4 font-medium ">
+                            SOP Syaria Department
+                        </th>
+                        <td class="px-6 py-4">
+                            2.5mb
+                        </td>
+                        <td class="px-6 py-4">
+                            Arif Nursidik
+                        </td>
+                        <td class="px-6 py-4">
+                            03/03/2024
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#">
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                            </a>
+                        </td>
                     </tr>
-                </tbody>
-            </table>
-        </div>   
-    </div>
+
+                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                        <th scope="row" class="px-6 py-4 font-medium ">
+                            SOP Syaria Department
+                        </th>
+                        <td class="px-6 py-4">
+                            2.5mb
+                        </td>
+                        <td class="px-6 py-4">
+                            Arif Nursidik
+                        </td>
+                        <td class="px-6 py-4">
+                            03/03/2024
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#">
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                        <th scope="row" class="px-6 py-4 font-medium ">
+                            SOP Syaria Department
+                        </th>
+                        <td class="px-6 py-4">
+                            2.5mb
+                        </td>
+                        <td class="px-6 py-4">
+                            Arif Nursidik
+                        </td>
+                        <td class="px-6 py-4">
+                            03/03/2024
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#">
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                        <th scope="row" class="px-6 py-4 font-medium ">
+                            SOP Syaria Department
+                        </th>
+                        <td class="px-6 py-4">
+                            2.5mb
+                        </td>
+                        <td class="px-6 py-4">
+                            Arif Nursidik
+                        </td>
+                        <td class="px-6 py-4">
+                            03/03/2024
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#">
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                        <th scope="row" class="px-6 py-4 font-medium ">
+                            SOP Syaria Department
+                        </th>
+                        <td class="px-6 py-4">
+                            2.5mb
+                        </td>
+                        <td class="px-6 py-4">
+                            Arif Nursidik
+                        </td>
+                        <td class="px-6 py-4">
+                            03/03/2024
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#">
+                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>   
+
 
     <div class="plusButton">
-        <a href="#" class="fixed bottom-4 right-4">
+        <a href="{{ url('/upload') }}" class="fixed bottom-4 right-4">
             <div class="bg-red-800 p-5 rounded-full">
                 <i class="fa-solid fa-plus text-white"></i>
             </div>
