@@ -21,7 +21,7 @@
                 <div> 
 
                             <h2 class="font-medium text-xs md:text-sm text-center text-white">
-                                Oliver Sebastian
+                                {{ $user->username }}
                             </h2>
                             <p class="text-xs text-white text-center">Super Admin</p>
                             </div>
