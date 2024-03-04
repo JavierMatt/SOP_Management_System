@@ -38,7 +38,7 @@
                             <span class="">User Management</span>
                         </a>
         
-                        <a href="" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
+                        <a href="{{ url('/') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
                             <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
                             <span class="">Logout</span>
                         </a>
@@ -56,22 +56,33 @@
                     <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-black bg-white border border-gray-300 rounded-s-lg" type="button">All categories 
                         <i class="fa-solid fa-caret-down pl-5" style="color: #000000;"></i>
                     </button>
-                    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
-                        <li>
-                            <button type="button" class="inline-flex w-full px-4 py-2">Mockups</button>
-                        </li>
-                        <li>
-                            <button type="button" class="inline-flex w-full px-4 py-2">Templates</button>
-                        </li>
-                        <li>
-                            <button type="button" class="inline-flex w-full px-4 py-2">Design</button>
-                        </li>
-                        <li>
-                            <button type="button" class="inline-flex w-full px-4 py-2">Logos</button>
-                        </li>
+                    
+                    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 mt-10 absolute">
+                        <ul class="py-2 text-sm text-black" aria-labelledby="dropdown-button">
+                            <li>
+                                <a href="#" class="inline-flex w-full px-4 py-2">IT</a>
+                            </li>
+                            <li>
+                                <a href="#" class="inline-flex w-full px-4 py-2">Branch</a>
+                            </li>
+                            <li>
+                                <a href="#" class="inline-flex w-full px-4 py-2">Sales</a>
+                            </li>
+                            <li>
+                                <a href="#" class="inline-flex w-full px-4 py-2">Syaria</a>
+                            </li>
                         </ul>
                     </div>
+                    
+                    <script>
+                        const dropdownButton = document.getElementById('dropdown-button');
+                        const dropdown = document.getElementById('dropdown');
+                    
+                        dropdownButton.addEventListener('click', () => {
+                            dropdown.classList.toggle('hidden');
+                        });
+                    </script>
+
                     <div class="relative w-full">
                         <input type="search" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-black bg-white rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 " placeholder="Search Mockups, Logos, Design Templates..." required />
                         <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-gray-300 rounded-e-lg border border-gray-300">

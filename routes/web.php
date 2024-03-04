@@ -31,4 +31,4 @@ Route::post('/upload', [FileController::class, 'upload']);
 // Route::get('/download{fileid}', [FileController::class, 'downloadfile'])->name('download');
 Route::get('/download/{fileid}', [FileController::class, 'download'])->name('file.download');
 
-
+Route::get('/changePassword', [UserController::class,'userChangePassword']);
