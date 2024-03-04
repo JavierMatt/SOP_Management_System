@@ -94,242 +94,241 @@
             </form>
         </div>
 
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+        <div class="tabel relative overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg mt-5">
             <table class="w-full text-sm text-center text-black">
-                <thead class="text-xs text-white uppercase bg-red-800">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Title
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Size
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Contributor
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Date
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{-- data masi hardcode --}}
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row title" class="px-6 py-4 font-medium">
-                            SOP IT Department
-                        </th>
-                        <td class="px-6 py-4">
-                            3mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Yonatan Lesmana
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i>
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    
+                <thead class="text-xs text-white uppercase bg-red-800 sticky top-0">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Title
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Size
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Contributor
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Date
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
 
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row" class="px-6 py-4 font-medium ">
-                            SOP Conven Department
-                        </th>
-                        <td class="px-6 py-4">
-                            3mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Yoga Pranata
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td> 
-                    </tr>
+                    <tbody>
+                        {{-- data masi hardcode --}}
+                        <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                            <th scope="row title" class="px-6 py-4 font-medium">
+                                SOP IT Department
+                            </th>
+                            <td class="px-6 py-4">
+                                3mb
+                            </td>
+                            <td class="px-6 py-4">
+                                Yonatan Lesmana
+                            </td>
+                            <td class="px-6 py-4">
+                                03/03/2024
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="#">
+                                    <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i>
+                                    <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        
 
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row" class="px-6 py-4 font-medium ">
-                            SOP Sales Department
-                        </th>
-                        <td class="px-6 py-4">
-                            2mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Yusuf Abdi
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td>
-                    </tr>
+                        <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                            <th scope="row" class="px-6 py-4 font-medium ">
+                                SOP Conven Department
+                            </th>
+                            <td class="px-6 py-4">
+                                3mb
+                            </td>
+                            <td class="px-6 py-4">
+                                Yoga Pranata
+                            </td>
+                            <td class="px-6 py-4">
+                                03/03/2024
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="#">
+                                    <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                    <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                </a>
+                            </td> 
+                        </tr>
 
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row" class="px-6 py-4 font-medium ">
-                            SOP Branch Department
-                        </th>
-                        <td class="px-6 py-4">
-                            3mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Ahmad Rosi
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td>
-                    </tr>
+                        <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                            <th scope="row" class="px-6 py-4 font-medium ">
+                                SOP Sales Department
+                            </th>
+                            <td class="px-6 py-4">
+                                2mb
+                            </td>
+                            <td class="px-6 py-4">
+                                Yusuf Abdi
+                            </td>
+                            <td class="px-6 py-4">
+                                03/03/2024
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="#">
+                                    <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                    <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                </a>
+                            </td>
+                        </tr>
 
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row" class="px-6 py-4 font-medium ">
-                            SOP Syaria Department
-                        </th>
-                        <td class="px-6 py-4">
-                            2.5mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Arif Nursidik
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row" class="px-6 py-4 font-medium ">
-                            SOP Syaria Department
-                        </th>
-                        <td class="px-6 py-4">
-                            2.5mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Arif Nursidik
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row" class="px-6 py-4 font-medium ">
-                            SOP Syaria Department
-                        </th>
-                        <td class="px-6 py-4">
-                            2.5mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Arif Nursidik
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row" class="px-6 py-4 font-medium ">
-                            SOP Syaria Department
-                        </th>
-                        <td class="px-6 py-4">
-                            2.5mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Arif Nursidik
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row" class="px-6 py-4 font-medium ">
-                            SOP Syaria Department
-                        </th>
-                        <td class="px-6 py-4">
-                            2.5mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Arif Nursidik
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                        <th scope="row" class="px-6 py-4 font-medium ">
-                            SOP Syaria Department
-                        </th>
-                        <td class="px-6 py-4">
-                            2.5mb
-                        </td>
-                        <td class="px-6 py-4">
-                            Arif Nursidik
-                        </td>
-                        <td class="px-6 py-4">
-                            03/03/2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#">
-                                <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
-                                <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </tr>
-            </tbody>
-        </table>
+                        <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                            <th scope="row" class="px-6 py-4 font-medium ">
+                                SOP Branch Department
+                            </th>
+                            <td class="px-6 py-4">
+                                3mb
+                            </td>
+                            <td class="px-6 py-4">
+                                Ahmad Rosi
+                            </td>
+                            <td class="px-6 py-4">
+                                03/03/2024
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="#">
+                                    <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                    <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                </a>
+                            </td>
+                            <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                                <th scope="row" class="px-6 py-4 font-medium ">
+                                    SOP Syaria Department
+                                </th>
+                                <td class="px-6 py-4">
+                                    2.5mb
+                                </td>
+                                <td class="px-6 py-4">
+                                    Arif Nursidik
+                                </td>
+                                <td class="px-6 py-4">
+                                    03/03/2024
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#">
+                                        <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                        <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                    </a>
+                                </td>
+                            </tr>
+    
+                            <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                                <th scope="row" class="px-6 py-4 font-medium ">
+                                    SOP Syaria Department
+                                </th>
+                                <td class="px-6 py-4">
+                                    2.5mb
+                                </td>
+                                <td class="px-6 py-4">
+                                    Arif Nursidik
+                                </td>
+                                <td class="px-6 py-4">
+                                    03/03/2024
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#">
+                                        <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                        <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                    </a>
+                                </td>
+                            </tr>
+    
+                            <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                                <th scope="row" class="px-6 py-4 font-medium ">
+                                    SOP Syaria Department
+                                </th>
+                                <td class="px-6 py-4">
+                                    2.5mb
+                                </td>
+                                <td class="px-6 py-4">
+                                    Arif Nursidik
+                                </td>
+                                <td class="px-6 py-4">
+                                    03/03/2024
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#">
+                                        <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                        <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                    </a>
+                                </td>
+                            </tr>
+    
+                            <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                                <th scope="row" class="px-6 py-4 font-medium ">
+                                    SOP Syaria Department
+                                </th>
+                                <td class="px-6 py-4">
+                                    2.5mb
+                                </td>
+                                <td class="px-6 py-4">
+                                    Arif Nursidik
+                                </td>
+                                <td class="px-6 py-4">
+                                    03/03/2024
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#">
+                                        <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                        <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                    </a>
+                                </td>
+                            </tr>
+    
+                            <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                                <th scope="row" class="px-6 py-4 font-medium ">
+                                    SOP Syaria Department
+                                </th>
+                                <td class="px-6 py-4">
+                                    2.5mb
+                                </td>
+                                <td class="px-6 py-4">
+                                    Arif Nursidik
+                                </td>
+                                <td class="px-6 py-4">
+                                    03/03/2024
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#">
+                                        <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                        <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                    </a>
+                                </td>
+                            </tr>
+    
+                            <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                                <th scope="row" class="px-6 py-4 font-medium ">
+                                    SOP Syaria Department
+                                </th>
+                                <td class="px-6 py-4">
+                                    2.5mb
+                                </td>
+                                <td class="px-6 py-4">
+                                    Arif Nursidik
+                                </td>
+                                <td class="px-6 py-4">
+                                    03/03/2024
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#">
+                                        <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i> 
+                                        <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                    </a>
+                                </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>  
     </div>   
 
 

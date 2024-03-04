@@ -15,19 +15,9 @@
                             <input id="title" name="title" type="text" autocomplete="title" placeholder="Input Document title" required class="block w-full rounded-md py-1.5 text-gray-600 p-2 border-solid border-2 placeholder:text-gray-400 sm:text-sm sm:leading-6">
                         </div>
                     </div>
-                
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Contributor</h3>
-                        <div class="mt-2">
-                            <input id="contributor" name="contributor" type="text" autocomplete="contributor" placeholder="Input Contributor" required class="block w-full rounded-md py-1.5 text-gray-600 p-2 border-solid border-2 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-                        </div>
-                    </div>
-                </form>
-        </div>
+            </form>
 
-        <!-- Kanan -->
-        <div class="w-full sm:w-2/5 mt-24 sm:mx-auto sm:max-w-sm bg-white p-4 opacity-90 rounded-xl">
-            <h3 class="text-xl font-semibold mb-2">Department</h3>
+            <h3 class="text-xl font-semibold mb-2 mt-5">Department</h3>
             <div class="dropdown mt-2">
                 <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-black bg-white border border-gray-300 rounded-xl" type="button">
                     Choose Department 
@@ -61,12 +51,36 @@
                     });
                 </script>
             </div>
-                       
-            <div>
-                <label class="block mt-6 mb-2 text-xl font-medium text-gray-900" for="file_input">Upload file</label>
-                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50" aria-describedby="file_input_help" id="file_input" type="file">
-                <p class="mt-1 text-sm text-red-800" id="file_input_help">PDF(MAX. 3mb).</p>
-            </div>
+        </div>
+
+        <!-- Kanan -->
+        <div class="w-full sm:w-2/5 mt-20 sm:mx-auto sm:max-w-sm bg-white p-4 opacity-90 rounded-xl">
+            <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-6">
+                    <label class="block text-xl font-medium text-gray-900" for="path">Upload file
+                        <span>
+                            <p class="mt-1 text-sm text-red-800" id="file_input_help">PDF (MAX. 3mb).</p>
+                        </span>
+                    </label>
+                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 py-2 px-3" type="file" id="path" name="path" accept="application/pdf" required>
+                    <div class="mt-2">
+                        <label class="text-sm text-gray-600">File Size:</label>
+                        <span id="file_size_label" class="text-sm text-gray-900"></span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm text-gray-600" for="version">Version:</label>
+                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg py-2 px-3" type="number" id="version" name="version" required>
+                </div>
+            </form>
+            <script>
+                document.getElementById('path').addEventListener('change', function() {
+                    var fileSize = this.files[0].size;
+                    var fileSizeLabel = (fileSize / (1024 * 1024)).toFixed(2) + ' MB';
+                    document.getElementById('file_size_label').textContent = fileSizeLabel;
+                });
+            </script>
         </div>
 
     </div>
@@ -77,6 +91,8 @@
             Login
         </button>
     </div>
+    
+@endsection
 
 {{-- <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -116,5 +132,3 @@
         document.getElementById('file_size_label').textContent = fileSizeLabel;
     });
 </script> --}}
-
-@endsection
