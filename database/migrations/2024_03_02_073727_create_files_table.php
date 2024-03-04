@@ -12,12 +12,13 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id('fileID');
-            $table->unsignedBigInteger('versionID');
-            $table->unsignedBigInteger('SOPID');
-            $table->date('date');
-            $table->unsignedBigInteger('userid');
-            $table->string('pdfpath');
             $table->unsignedBigInteger('catid');
+            $table->unsignedBigInteger('userid');
+            $table->string('filename');
+            $table->unsignedBigInteger('version');
+            $table->string('path');
+            $table->unsignedBigInteger('size');
+            $table->date('date');
             $table->timestamps();
 
             $table->foreign('userid')->references('userid')->on('users');

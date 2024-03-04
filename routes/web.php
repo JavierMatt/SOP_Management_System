@@ -4,19 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FileController;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 // Login route
+Route::get('/', function () {
+    return view('login');
+});
 Route::get('/login', function () {
     return view('login');
 })->name('login');
@@ -29,11 +20,15 @@ Route::get('/register', function () {
 Route::post('/login', [UserController::class, 'userLogin']);
 Route::post('/register', [UserController::class, 'userRegister']);
 
-
-// Admin user page route (dijaga kalo iseng hehe)
+// Admin user page route
 Route::get('/adminpage', [FileController::class, 'showFileAdmin'])->middleware('admin')->name('adminpage');
 Route::get('/userpage', [FileController::class, 'showFileUser'])->middleware('user')->name('userpage');
 
-// User Change Password route
+// Upload route
+Route::get('/upload', [FileController::class, 'showcategory'])->name('upload');
+Route::post('/upload', [FileController::class, 'upload']);
 
-Route::get('/changePassword', [UserController::class, 'userChangePassword']);
+// Route::get('/download{fileid}', [FileController::class, 'downloadfile'])->name('download');
+Route::get('/download/{fileid}', [FileController::class, 'download'])->name('file.download');
+
+
