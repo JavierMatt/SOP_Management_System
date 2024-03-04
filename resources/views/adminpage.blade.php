@@ -20,32 +20,32 @@
                     <img src="{{ asset('images/profile.png') }}" alt="Avatar user" class="w-10 md:w-16 rounded-full mx-auto"/>
                 <div> 
 
-                        <h2 class="font-medium text-xs md:text-sm text-center text-white">
-                            Oliver Sebastian
-                        </h2>
-                        <p class="text-xs text-white text-center">Super Admin</p>
+                            <h2 class="font-medium text-xs md:text-sm text-center text-white">
+                                Oliver Sebastian
+                            </h2>
+                            <p class="text-xs text-white text-center">Super Admin</p>
+                            </div>
+                        </div>
+            
+                        <div id="menu" class="flex flex-col space-y-2">
+                            <a href="" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white  rounded-md transition duration-150 ease-in-out">
+                                <i class="fas fa-house" style="color: #ffffff;"></i>
+                                <span class="">Dashboard</span>
+                            </a>
+                        
+                            <a href="" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
+                                <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                                <span class="">User Management</span>
+                            </a>
+            
+                            <a href="{{ url('/') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
+                                <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+                                <span class="">Logout</span>
+                            </a>
                         </div>
                     </div>
-        
-                    <div id="menu" class="flex flex-col space-y-2">
-                        <a href="" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white  rounded-md transition duration-150 ease-in-out">
-                            <i class="fas fa-house" style="color: #ffffff;"></i>
-                            <span class="">Dashboard</span>
-                        </a>
-                     
-                        <a href="" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
-                            <i class="fa-solid fa-user" style="color: #ffffff;"></i>
-                            <span class="">User Management</span>
-                        </a>
-        
-                        <a href="{{ url('/') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
-                            <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
-                            <span class="">Logout</span>
-                        </a>
-                    </div>
-                </div>
-    </div> 
- </aside>
+        </div> 
+    </aside>
  
     <div class="p-4 sm:ml-64 flex-grow">
         <h1 class="text-2xl font-bold text-lack">Dashboard</h1>
@@ -94,29 +94,6 @@
                     </div>
                 </div>
             </form>
-
-            {{-- <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-black bg-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center border border-transparent border-gray-300 focus:border-gray-300 focus:outline-none" type="button">
-                Select Department
-                <i class="fa-solid fa-caret-down pl-5" style="color: #000000;"></i>
-            </button>
-                
-                <!-- Dropdown menu -->
-                <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                    <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-                    </li>
-                    </ul>
-            </div> --}}
         </div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">

@@ -1,4 +1,4 @@
-@extends('template')
+@extends('layouts.templateAdmin')
 @section('content')
 <h1>Upload Form</h1>
 
