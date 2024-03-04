@@ -11,7 +11,7 @@
     <div>
         <label for="category">Category:</label>
         <select id="category" name="category" required>
-            <option value="">Select Category</option> <!-- Set default value to empty -->
+            <option value="">Select Category</option>
             @foreach($categories as $category)
                 <option value="{{ $category->catid }}">{{ $category->dept }}</option>
             @endforeach

@@ -25,7 +25,7 @@ class Filecontroller extends Controller
 {
     $pdfFiles = File::all();
     foreach ($pdfFiles as $pdfFile) {
-        $pdfFile->category = Category::find($pdfFile->catid); // Fetch the category for each file
+        $pdfFile->category = Category::find($pdfFile->catid); 
     }
     return view('adminpage', compact('pdfFiles'));
 }
@@ -50,8 +50,8 @@ class Filecontroller extends Controller
     $size = Storage::size($validatedData['path']);
     $file->path = $validatedData['path'];
     $file->size = $size;
-    $file->userid = auth()->id(); // Assuming user is authenticated
-    $file->date = now(); // Set the current date
+    $file->userid = auth()->id(); 
+    $file->date = now(); 
     
     $file->save();
 
@@ -62,7 +62,7 @@ class Filecontroller extends Controller
 
     public function showcategory()
     {
-        $categories = Category::all(); // Fetch all categories from the database
+        $categories = Category::all();
         return view('upload', compact('categories'));
     }
     
