@@ -249,7 +249,7 @@
     </div>
 
     <div class="plusButton">
-        <a href="#" class="fixed bottom-4 right-4">
+        <a href="{{ url('/upload') }}" class="fixed bottom-4 right-4">
             <div class="bg-red-800 p-5 rounded-full">
                 <i class="fa-solid fa-plus text-white"></i>
             </div>
