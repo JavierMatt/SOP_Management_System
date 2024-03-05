@@ -1,15 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Category; 
+
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+
 class Usercontroller extends Controller
-{   
+{
     public function toLogin()
     {
         return view('login');
@@ -38,7 +40,7 @@ class Usercontroller extends Controller
 
         return back()->withErrors('Username or password not valid');
     }
-        public function userRegister(Request $request)
+    public function userRegister(Request $request)
     {
         // Validate input data
         $validatedData = $request->validate([

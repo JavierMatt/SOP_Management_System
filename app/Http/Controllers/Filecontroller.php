@@ -22,107 +22,120 @@ class Filecontroller extends Controller
         return view('userpage');
     }
     public function showFileAdmin()
-{
-    $pdfFiles = File::all();
-    foreach ($pdfFiles as $pdfFile) {
-        $pdfFile->category = Category::find($pdfFile->catid); 
+    {
+        $pdfFiles = File::all();
+        $categories = Category::all();
+        foreach ($pdfFiles as $pdfFile) {
+            $pdfFile->category = Category::find($pdfFile->catid);
+        }
+        return view('adminpage', compact('pdfFiles', 'categories'));
     }
-    return view('adminpage', compact('pdfFiles'));
-}
     public function upload(Request $request)
-{
-    // return $request ->file('path')->store('pdf-SOP');
-    $validatedData = $request->validate([
-        'filename' => 'required',
-        'category' => 'required',
-        'version' => 'required|integer',
-        'path' => 'required|file|mimes:pdf|max:3072', // Max size 3MB (3072 KB)
-    ]);
+    {
+        $validatedData = $request->validate([
+            'filename' => 'required',
+            'category' => 'required',
+            'version' => 'required|integer',
+            'path' => 'required|file|mimes:pdf|max:3072', // Max size 3MB (3072 KB)
+        ]);
 
-    $file = new File();
-    $file->filename = $validatedData['filename'];
-    $file->catid = $validatedData['category'];
-    $file->version = $validatedData['version'];
+        $file = new File();
+        $file->filename = $validatedData['filename'];
+        $file->catid = $validatedData['category'];
+        $file->version = $validatedData['version'];
 
-  
-    $validatedData['path'] = $request->file('path')->store('pdf-SOP');
+        $validatedData['path'] = $request->file('path')->store('pdf-SOP');
+        $size = Storage::size($validatedData['path']);
+        $file->path = $validatedData['path'];
+        $file->size = $size;
+        $file->userid = auth()->id();
+        $file->date = now();
+        $file->save();
 
-    $size = Storage::size($validatedData['path']);
-    $file->path = $validatedData['path'];
-    $file->size = $size;
-    $file->userid = auth()->id(); 
-    $file->date = now(); 
-    
-    $file->save();
-
-    return redirect()->route('adminpage')->with('success', 'File uploaded successfully');
-}
-    
-
+        return redirect()->route('adminpage')->with('success', 'File uploaded successfully');
+    }
 
     public function showcategory()
     {
         $categories = Category::all();
         return view('upload', compact('categories'));
     }
-    
-        public function download($fileid)
-{
-    $pdfFile = File::findOrFail($fileid);
-    $filePath = public_path('storage/' . $pdfFile->path); 
-    return response()->download($filePath);
-}
 
-public function toVersioning($fileid)
-{
-    // Retrieve the file based on the fileID with eager loading of category and user
-    $pdfFile = File::with('category', 'user')->findOrFail($fileid);
+    public function download($fileid)
+    {
+        $pdfFile = File::findOrFail($fileid);
+        $filePath = public_path('storage/' . $pdfFile->path);
 
-    // Retrieve all files with the same filename and catid
-    $pdfFiles = File::where('filename', $pdfFile->filename)
-                    ->where('catid', $pdfFile->catid)
-                    ->get();
-    
-    // Pass the retrieved files to the 'versioning' view
-    return view('versioning', compact('pdfFiles'));
-}
-public function update(Request $request, $fileid)
-{
-    // dd($request);
-    // return $request ->file('path')->store('pdf-SOP');
-    $validatedData = $request->validate([
-        'filename' => 'required',
-        'category' => 'required',
-        'version' => 'required|integer',
-        'path' => 'required|file|mimes:pdf|max:3072', // Max size 3MB (3072 KB)
-    ]);
-
-    $file = new File();
-    $file->filename = $validatedData['filename'];
-    $file->catid = $validatedData['category'];
-    $file->version = $validatedData['version'];
-
-  
-    $validatedData['path'] = $request->file('path')->store('pdf-SOP');
-
-    $size = Storage::size($validatedData['path']);
-    $file->path = $validatedData['path'];
-    $file->size = $size;
-    $file->userid = auth()->id(); 
-    $file->date = now(); 
-    
-    $file->save();
-    return redirect()->route('toversioning', ['fileid' => $fileid])->with('success', 'File uploaded successfully');
-
-
-    
-}
-public function toUpdate($fileid)
-{
-    $pdfFile = File::findOrFail($fileid);
-    return view('update', compact('pdfFile'));
-}
+        return response()->download($filePath, $pdfFile->filename . '.' . pathinfo($filePath, PATHINFO_EXTENSION));
     }
 
+    public function toVersioning($fileid)
+    {
+        // Retrieve the file based on the fileID with eager loading of category and user
+        $pdfFile = File::with('category', 'user')->findOrFail($fileid);
+
+        // Retrieve all files with the same filename and catid
+        $pdfFiles = File::where('filename', $pdfFile->filename)
+            ->where('catid', $pdfFile->catid)
+            ->get();
+
+        // Pass the retrieved files to the 'versioning' view
+        return view('versioning', compact('pdfFiles'));
+    }
+    public function update(Request $request, $fileid)
+    {
+        // dd($request);
+        // return $request ->file('path')->store('pdf-SOP');
+        $validatedData = $request->validate([
+            'filename' => 'required',
+            'category' => 'required',
+            'version' => 'required|integer',
+            'path' => 'required|file|mimes:pdf|max:3072', // Max size 3MB (3072 KB)
+        ]);
+
+        $file = new File();
+        $file->filename = $validatedData['filename'];
+        $file->catid = $validatedData['category'];
+        $file->version = $validatedData['version'];
 
 
+        $validatedData['path'] = $request->file('path')->store('pdf-SOP');
+
+        $size = Storage::size($validatedData['path']);
+        $file->path = $validatedData['path'];
+        $file->size = $size;
+        $file->userid = auth()->id();
+        $file->date = now();
+
+        $file->save();
+        return redirect()->route('toversioning', ['fileid' => $fileid])->with('success', 'File uploaded successfully');
+    }
+    public function toUpdate($fileid)
+    {
+        $pdfFile = File::findOrFail($fileid);
+        return view('update', compact('pdfFile'));
+    }
+    public function search(Request $request)
+    {
+        $searchTerm = $request->query('search');
+
+        $pdfFiles = File::where('filename', 'like', '%' . $searchTerm . '%')->get();
+        $categories = Category::all();
+
+        return view('adminpage', compact('pdfFiles', 'categories'));
+    }
+
+    public function filter(Request $request)
+    {
+        $categoryId = $request->query('category');
+
+        if ($categoryId) {
+            $pdfFiles = File::where('catid', $categoryId)->get();
+        } else {
+            $pdfFiles = File::all();
+        }
+
+        $categories = Category::all();
+        return view('adminpage', compact('pdfFiles', 'categories'));
+    }
+}
