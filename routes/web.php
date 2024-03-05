@@ -14,7 +14,7 @@ Route::get('/login', function () {
 
 Route::get('/register', function () {
     return view('register');
-})->middleware('admin')->name('register');
+})->name('register');
 
 // User login route
 Route::post('/login', [UserController::class, 'userLogin']);
