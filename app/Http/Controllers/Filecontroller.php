@@ -30,6 +30,11 @@ class Filecontroller extends Controller
         }
         return view('adminpage', compact('pdfFiles', 'categories'));
     }
+    public function userManagement()
+    {
+        $userFiles = User::all();
+        return view('userManagement', compact('userFiles'));
+    }
     public function upload(Request $request)
     {
         $validatedData = $request->validate([

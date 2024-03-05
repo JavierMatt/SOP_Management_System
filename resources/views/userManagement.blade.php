@@ -110,13 +110,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($userFiles as $userFile )
                     {{-- data masi hardcode --}}
                     <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
                         <th scope="row title" class="px-6 py-4 font-medium">
-                            Yonatan Lesmana
+                            {{$userFile->username}}
                         </th>
                         <td class="px-6 py-4">
-                            Admin
+                            {{$userFile->role}}
                         </td>
                         <!-- Alert -->
                         <div id="deleteModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
@@ -167,6 +168,7 @@
                         </script>
                     </tr>
                 </tr>
+                @endforeach
             </tbody>
         </table>   
     </div>   

@@ -12,8 +12,8 @@
         <!-- Dropdown menu -->
         <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow absolute right-0 mt-2 ml-10 w-48" id="user-dropdown">
           <div class="px-4 py-3 bg-red-800 rounded-md text-white">
-            <h1 class="nama block font-bold">Oliver Sebastian</h1>
-            <h3 class="role block truncate">User</h3>
+            <h1 class="nama block font-bold">{{Auth::user()->username}}</h1>
+            <h3 class="role block truncate">{{Auth::user()->role}}</h3>
           </div>
           <ul class="py-2" aria-labelledby="user-menu-button">
             <li>

@@ -19,9 +19,9 @@
                     <div> 
 
                             <h2 class="font-medium text-xs md:text-sm text-center text-white">
-                                Oliver Sebastian
+                                {{Auth::user()->username}}
                             </h2>
-                            <p class="text-xs text-white text-center">Super Admin</p>
+                            <p class="text-xs text-white text-center">{{Auth::user()->role}}</p>
                             </div>
                         </div>
             

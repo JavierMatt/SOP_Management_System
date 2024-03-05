@@ -44,4 +44,4 @@ Route::get('/adminpage/filter', [FileController::class,'filter'])->name('filter'
 
 Route::get('/changePassword', [UserController::class,'userChangePassword']);
 
-Route::get('/userManagement', [UserController::class,'userManagement']);
+Route::get('/userManagement', [FileController::class,'userManagement'])->name('userManagement');
