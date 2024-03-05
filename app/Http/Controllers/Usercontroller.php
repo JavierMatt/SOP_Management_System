@@ -61,4 +61,7 @@ class Usercontroller extends Controller
         return view("userChangePassword");
     }
 
+    public function userManagement() {
+        return view("userManagement");
+    }
 }

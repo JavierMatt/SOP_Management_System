@@ -14,7 +14,7 @@ Route::get('/login', function () {
 
 Route::get('/register', function () {
     return view('register');
-})->name('register');
+})->middleware('admin')->name('register');
 
 // User login route
 Route::post('/login', [UserController::class, 'userLogin']);
@@ -25,10 +25,17 @@ Route::get('/adminpage', [FileController::class, 'showFileAdmin'])->middleware('
 Route::get('/userpage', [FileController::class, 'showFileUser'])->middleware('user')->name('userpage');
 
 // Upload route
-Route::get('/upload', [FileController::class, 'showcategory'])->name('upload');
-Route::post('/upload', [FileController::class, 'upload']);
+Route::get('/upload', [FileController::class, 'showcategory'])->middleware('admin');
+Route::post('/upload', [FileController::class, 'upload'])->middleware('admin')->name('upload');
 
 // Route::get('/download{fileid}', [FileController::class, 'downloadfile'])->name('download');
 Route::get('/download/{fileid}', [FileController::class, 'download'])->name('file.download');
+// Route::get('/toversioning/{filename}/{catid}',[FileController::class,'toVersioning'])->name('toversioning');
+
+Route::get('/versioning/{fileid}',[FileController::class,'toVersioning'])->name('toversioning');
+Route::get('/update/{fileid}',[FileController::class,'toUpdate'])->middleware('admin')->name('toUpdate');
+Route::post('/update/{fileid}',[FileController::class,'update'])->middleware('admin')->name('update');
 
 Route::get('/changePassword', [UserController::class,'userChangePassword']);
+
+Route::get('/userManagement', [UserController::class,'userManagement']);
