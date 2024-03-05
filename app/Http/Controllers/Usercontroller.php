@@ -42,6 +42,7 @@ class Usercontroller extends Controller
     }
     public function userRegister(Request $request)
     {
+        // dd($request);
         // Validate input data
         $validatedData = $request->validate([
             'username' => 'required|unique:users',

@@ -6,7 +6,7 @@
     <div class="flex flex-wrap justify-between">
         <!-- Kiri -->
         <div class="w-full sm:w-2/5 mt-10 sm:mx-auto sm:max-w-sm bg-white p-4 opacity-90 rounded-xl">
-            <h1 class="text-2xl font-bold text-black">Upload Document</h1>
+            <h1 class="text-3xl font-bold text-black">Upload Document</h1>
                     <div>
                         <h3 class="text-xl font-semibold mb-2">File name</h3>
                         <div class="mt-2">
