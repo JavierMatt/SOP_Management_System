@@ -111,7 +111,6 @@
                 </thead>
                 <tbody>
                     @foreach ($userFiles as $userFile )
-                    {{-- data masi hardcode --}}
                     <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
                         <th scope="row title" class="px-6 py-4 font-medium">
                             {{$userFile->username}}

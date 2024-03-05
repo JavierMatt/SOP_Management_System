@@ -7,7 +7,7 @@
         <!-- Kiri -->
         <div class="w-full sm:w-2/5 mt-10 sm:mx-auto sm:max-w-sm bg-white p-4 opacity-90 rounded-xl">
             <h1 class="text-3xl font-bold text-black">Upload Document</h1>
-                    <div>
+                    <div class="mt-10">
                         <h3 class="text-xl font-semibold mb-2">File name</h3>
                         <div class="mt-2">
                             <input id="filename" name="filename" type="text" autocomplete="title" placeholder="Input Document title" required class="block w-full rounded-md py-1.5 text-gray-600 p-2 border-gray-300 border placeholder:text-gray-400 sm:text-sm sm:leading-6">
@@ -34,6 +34,17 @@
                     </span>
                 </label>
                 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 py-2 px-3" type="file" id="fileInput" name="path" accept="application/pdf" required onchange="updateFileSizeLabel(this)">
+                <div class="error mt-5">
+                    @if ($errors->any())
+                        <div class="bg-red-500 text-white p-4 rounded">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
                 <div class="mt-2">
                     <label class="text-sm text-gray-600">File Size:</label>
                     <span id="file_size_label" class="text-sm text-gray-900"></span>

@@ -45,3 +45,7 @@ Route::get('/adminpage/filter', [FileController::class,'filter'])->name('filter'
 Route::get('/changePassword', [UserController::class,'userChangePassword']);
 
 Route::get('/userManagement', [FIleController::class,'userManagement']);
+
+//Route Filter and Seacrh di user
+Route::get('/userpage/filter', [UserController::class,'filter'])->name('filter');
+Route::get('/userpage/search', [UserController::class,'search'])->name('search');

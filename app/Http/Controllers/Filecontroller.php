@@ -17,9 +17,12 @@ class Filecontroller extends Controller
     //
     public function showFileUser()
     {
-
-        // logik
-        return view('userpage');
+        $pdfFiles = File::all();
+        $categories = Category::all();
+        foreach ($pdfFiles as $pdfFile) {
+            $pdfFile->category = Category::find($pdfFile->catid);
+        }
+        return view('userpage', compact('pdfFiles', 'categories'));
     }
     public function showFileAdmin()
     {

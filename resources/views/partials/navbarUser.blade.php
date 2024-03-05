@@ -2,7 +2,8 @@
   <nav class="bg-white">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="{{ asset('images/logoCimb.png') }}" class="h-8" alt="Flowbite Logo" />
+          <img src="{{ asset('images/logoCimb.png') }}" class="h-8" alt="Flowbite Logo" />
+          <h2 class="text-xl font-bold text-rose-800 pl-5">| Standar Operational Prosedur Management System</h2>
       </a>
       <div class="profile flex-col items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
         <button type="button" class="flex text-sm bg-red-800 rounded-full md:me-0 focus:ring-4 focus:ring-red-800" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
