@@ -12,8 +12,6 @@
         <label for="category">Category:</label>
         <input type="text" value="{{ $pdfFile->category->dept }}" readonly>
         <input type="hidden" id="category" name="category" value="{{ $pdfFile->catid }}" readonly required>
-
-
     </div>
     <div>
         <label for="version">Version:</label>

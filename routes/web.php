@@ -35,3 +35,8 @@ Route::get('/versioning/{fileid}',[FileController::class,'toVersioning'])->name(
 Route::get('/update/{fileid}',[FileController::class,'toUpdate'])->middleware('admin')->name('toUpdate');
 Route::post('/update/{fileid}',[FileController::class,'update'])->middleware('admin')->name('update');
 
+// Route for searching
+Route::get('/adminpage/search', [FileController::class,'search'])->name('search');
+
+// Route for filtering
+Route::get('/adminpage/filter', [FileController::class,'filter'])->name('filter');
