@@ -40,3 +40,4 @@ Route::get('/adminpage/search', [FileController::class,'search'])->name('search'
 
 // Route for filtering
 Route::get('/adminpage/filter', [FileController::class,'filter'])->name('filter');
+
