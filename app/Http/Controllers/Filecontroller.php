@@ -125,7 +125,7 @@ class Filecontroller extends Controller
         $pdfFile = File::findOrFail($fileid);
         return view('update', compact('pdfFile'));
     }
-    public function search(Request $request)
+    public function searchAdmin(Request $request)
     {
         $searchTerm = $request->query('search');
 
@@ -144,7 +144,21 @@ class Filecontroller extends Controller
         return view('userpage', compact('pdfFiles', 'categories'));
     }
 
-    public function filter(Request $request)
+    public function filterAdmin(Request $request)
+    {
+        $categoryId = $request->query('category');
+
+        if ($categoryId) {
+            $pdfFiles = File::where('catid', $categoryId)->get();
+        } else {
+            $pdfFiles = File::all();
+        }
+
+        $categories = Category::all();
+        return view('adminpage', compact('pdfFiles', 'categories'));
+    }
+
+    public function filterUser(Request $request)
     {
         $categoryId = $request->query('category');
 
