@@ -32,12 +32,15 @@ Route::post('/upload', [FileController::class, 'upload'])->middleware('admin')->
 Route::get('/download/{fileid}', [FileController::class, 'download'])->name('file.download');
 // Route::get('/toversioning/{filename}/{catid}',[FileController::class,'toVersioning'])->name('toversioning');
 
-Route::get('/versioning/{fileid}',[FileController::class,'toVersioning'])->name('toversioning');
+Route::get('/versioning/{fileid}',[FileController::class,'toVersioning'])->middleware('admin')->name('toversioning');
 Route::get('/update/{fileid}',[FileController::class,'toUpdate'])->middleware('admin')->name('toUpdate');
 Route::post('/update/{fileid}',[FileController::class,'update'])->middleware('admin')->name('update');
 
 // Route for searching
 Route::get('/adminpage/search', [FileController::class,'search'])->name('search');
+
+Route::get('/userpage/search', [FileController::class,'search'])->name('search2');
+
 
 Route::get('/userpage/search', [FileController::class,'search'])->name('search2');
 
