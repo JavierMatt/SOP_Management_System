@@ -71,27 +71,31 @@ class Usercontroller extends Controller
         return view('userManagement', compact('userFiles'));
     }
 
-    public function searchUser(Request $request)
+
+    public function deleteUser($id)
     {
-        $searchTerm = $request->query('search');
-
-        $pdfFiles = File::where('filename', 'like', '%' . $searchTerm . '%')->get();
-        $categories = Category::all();
-
-        return view('userpage', compact('pdfFiles', 'categories'));
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('showuser')->with('success', 'User deleted successfully');
+        } else {
+            // If the user is not found, return an error message
+            return redirect()->route('showuser')->with('error', 'User not found');
+        }
     }
 
-    public function filterUser(Request $request)
+    public function switchRole($id)
     {
-        $categoryId = $request->query('category');
+        $user = User::find($id);
 
-        if ($categoryId) {
-            $pdfFiles = File::where('catid', $categoryId)->get();
-        } else {
-            $pdfFiles = File::all();
+        if (!$user) {
+            return Redirect::route('userManagement')->with('error', 'User not found');
         }
 
-        $categories = Category::all();
-        return view('userpage', compact('pdfFiles', 'categories'));
+        $user->role = ($user->role === 'admin') ? 'user' : 'admin';
+        $user->save();
+
+        return redirect('userManagement');
+        
     }
 }
