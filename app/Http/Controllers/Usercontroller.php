@@ -71,7 +71,7 @@ class Usercontroller extends Controller
         return view('userManagement', compact('userFiles'));
     }
 
-    public function search(Request $request)
+    public function searchUser(Request $request)
     {
         $searchTerm = $request->query('search');
 
@@ -81,7 +81,7 @@ class Usercontroller extends Controller
         return view('userpage', compact('pdfFiles', 'categories'));
     }
 
-    public function filter(Request $request)
+    public function filterUser(Request $request)
     {
         $categoryId = $request->query('category');
 
