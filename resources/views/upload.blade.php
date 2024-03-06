@@ -4,6 +4,15 @@
 
 <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div>
         <label for="filename">File Name:</label>
         <input type="text" id="filename" name="filename" required>

@@ -5,6 +5,9 @@
     <h1>PDF Files</h1>
     <h5>Logged in as: {{ Auth::user()->username }}</h5>
     <h5>Current Role: {{ Auth::user()->role }}</h5>
+    
+    <a href="{{ route('logout') }}" class="btn btn-success">Logout</a>
+    
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <form class="d-flex" action="{{ route('search') }}" method="GET">
@@ -13,23 +16,14 @@
             </form>
         
             <form class="d-flex" action="{{ route('filter') }}" method="GET" id="filterForm">
-    <select id="category" name="category" onchange="submitForm()">
-        <option value="" disabled selected>Select Category</option> <!-- Placeholder -->
-        <option value="">All Category</option>
-        @foreach($categories as $category)
-            <option value="{{ $category->catid }}">{{ $category->dept }}</option>
-        @endforeach
-    </select>
-</form>
-
-<script>
-    function submitForm() {
-        document.getElementById('filterForm').submit();
-    }
-</script>
-
-
-
+                <select id="category" name="category" onchange="submitForm()">
+                    <option value="" disabled selected>Select Category</option> <!-- Placeholder -->
+                    <option value="">All Category</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->catid }}">{{ $category->dept }}</option>
+                    @endforeach
+                </select>
+            </form>
         </div>
     </nav>
     <div class="row">
@@ -51,4 +45,11 @@
         @endforeach
     </div>
 </div>
+
+<script>
+    function submitForm() {
+        document.getElementById('filterForm').submit();
+    }
+</script>
+
 @endsection
