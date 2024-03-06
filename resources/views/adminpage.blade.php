@@ -48,7 +48,7 @@
     <div class="p-4 sm:ml-64 flex-grow">
         <h1 class="text-4xl font-bold text-black">Dashboard</h1>
         
-        {{-- on prog --}}
+        {{-- seacrh and filtering --}}
         <div class="flex mt-5">
             <div class="search mr-2">
                 <form class="flex" action="{{ route('search') }}" method="GET">
@@ -72,7 +72,6 @@
                         </div> --}}
                     </div>
                 </form>
-                
             </div>
         </div>
 
@@ -82,42 +81,6 @@
                 document.getElementById('filterForm').submit();
             }
         </script>
-        
-        
-
-        {{-- punya jav --}}
-        {{-- <h5>Logged in as: {{ Auth::user()->username }}</h5>
-        <h5>Current Role: {{ Auth::user()->role }}</h5>
-        <nav class="navbar bg-body-tertiary"> --}}
-            {{-- <div class="container-fluid">
-                <form class="d-flex" action="{{ route('search') }}" method="GET">
-                    <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request()->input('search') }}">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <form class="d-flex" action="{{ route('filter') }}" method="GET">
-                    <select id="category" name="category">
-                        <option value="">Filter Category</option>
-                        @foreach($categories as $category)
-                        <option value="{{ $category->catid }}">{{ $category->dept }}</option>
-                        @endforeach
-                    </select>
-                    <button class="btn btn-outline-success" type="submit">Filter</button>
-                </form>
-            </div> --}}
-        {{-- </nav>
-        <div class="row">
-            @foreach($pdfFiles as $pdfFile)
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $pdfFile->filename }}</h5>
-                        <p class="card-text">Category: {{ $pdfFile->category->dept }}</p>
-                        <p class="card-text">Version: {{ $pdfFile->version }}</p>
-                        <a href="{{ route('file.download', ['fileid' => $pdfFile->fileID]) }}" 
-                            class="btn btn-success">Download PDF</a>
-
-                        <a href="{{ route('toversioning', ['fileid' => $pdfFile->fileID]) }}" 
-                            class="btn btn-success">View other version</a> --}}
 
         <div class="tabel relative overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg mt-5">
             <table class="w-full text-sm text-center text-black">
@@ -139,43 +102,48 @@
                                 Date
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Version
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Action
                             </th>
                         </tr>
-                    </thead>
+                </thead>
 
-                    <tbody>
-                        {{-- data masi hardcode --}}
-                        @foreach($pdfFiles as $pdfFile)
-                            <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
-                                <th class="px-6 py-4 font-medium">
-                                    {{  $pdfFile->filename }}
-                                </th>
-                                <th class="px-6 py-4 font-medium">
-                                    {{  $pdfFile->category->dept }}
-                                </th>
-                                <td class="px-6 py-4">
-                                    {{  $pdfFile->size }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{  $pdfFile->user->username }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{  $pdfFile->date }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="{{ route('file.download', ['fileid' => $pdfFile->fileID]) }}">
-                                        <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i>
-                                    </a>
-                                    <a href="{{ route('toversioning', ['fileid' => $pdfFile->fileID]) }}">
-                                        <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
-                                    </a>
-                                    
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <tbody>
+                    {{-- data masi hardcode --}}
+                    @foreach($pdfFiles as $pdfFile)
+                        <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
+                            <th class="px-6 py-4 font-medium">
+                                {{  $pdfFile->filename }}
+                            </th>
+                            <th class="px-6 py-4 font-medium">
+                                {{  $pdfFile->category->dept }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{  $pdfFile->size }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{  $pdfFile->user->username }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{  $pdfFile->date }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{  $pdfFile->version }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="{{ route('file.download', ['fileid' => $pdfFile->fileID]) }}">
+                                    <i class="fa-solid fa-download fa-lg" style="color: #000000;"></i>
+                                </a>
+                                <a href="{{ route('toversioning', ['fileid' => $pdfFile->fileID]) }}">
+                                    <i class="fa-solid fa-clock-rotate-left fa-lg" style="color: #000000;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>  
     </div>   
 

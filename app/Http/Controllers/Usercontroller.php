@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\User;
+use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -42,6 +43,7 @@ class Usercontroller extends Controller
     }
     public function userRegister(Request $request)
     {
+        // dd($request);
         // Validate input data
         $validatedData = $request->validate([
             'username' => 'required|unique:users',
@@ -63,7 +65,33 @@ class Usercontroller extends Controller
         return view("userChangePassword");
     }
 
-    public function userManagement() {
-        return view("userManagement");
+    public function userManagement()
+    {
+        $userFiles = User::all();
+        return view('userManagement', compact('userFiles'));
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->query('search');
+
+        $pdfFiles = File::where('filename', 'like', '%' . $searchTerm . '%')->get();
+        $categories = Category::all();
+
+        return view('userpage', compact('pdfFiles', 'categories'));
+    }
+
+    public function filter(Request $request)
+    {
+        $categoryId = $request->query('category');
+
+        if ($categoryId) {
+            $pdfFiles = File::where('catid', $categoryId)->get();
+        } else {
+            $pdfFiles = File::all();
+        }
+
+        $categories = Category::all();
+        return view('userpage', compact('pdfFiles', 'categories'));
     }
 }

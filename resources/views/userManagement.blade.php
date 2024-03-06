@@ -18,10 +18,10 @@
                         <img src="{{ asset('images/profile.png') }}" alt="Avatar user" class="w-10 md:w-16 rounded-full mx-auto"/>
                     <div> 
 
-                            <h2 class="font-medium text-xs md:text-sm text-center text-white">
-                                Oliver Sebastian
-                            </h2>
-                            <p class="text-xs text-white text-center">Super Admin</p>
+                            <h1 class="font-medium text-xl md:text-xl text-center text-white">
+                                {{Auth::user()->username}}
+                            </h1>
+                            <p class="text text-white text-center">{{Auth::user()->role}}</p>
                             </div>
                         </div>
             
@@ -111,7 +111,6 @@
                 </thead>
                 <tbody>
                     @foreach ($userFiles as $userFile )
-                    {{-- data masi hardcode --}}
                     <tr class="bg-white border-b border-black text-black cursor-pointer" onclick="window.location='#';">
                         <th scope="row title" class="px-6 py-4 font-medium">
                             {{$userFile->username}}
