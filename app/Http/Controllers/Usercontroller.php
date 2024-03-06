@@ -70,28 +70,4 @@ class Usercontroller extends Controller
         $userFiles = User::all();
         return view('userManagement', compact('userFiles'));
     }
-
-    public function searchUser(Request $request)
-    {
-        $searchTerm = $request->query('search');
-
-        $pdfFiles = File::where('filename', 'like', '%' . $searchTerm . '%')->get();
-        $categories = Category::all();
-
-        return view('userpage', compact('pdfFiles', 'categories'));
-    }
-
-    public function filterUser(Request $request)
-    {
-        $categoryId = $request->query('category');
-
-        if ($categoryId) {
-            $pdfFiles = File::where('catid', $categoryId)->get();
-        } else {
-            $pdfFiles = File::all();
-        }
-
-        $categories = Category::all();
-        return view('userpage', compact('pdfFiles', 'categories'));
-    }
 }

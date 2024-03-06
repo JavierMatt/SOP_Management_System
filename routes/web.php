@@ -39,13 +39,10 @@ Route::post('/update/{fileid}',[FileController::class,'update'])->middleware('ad
 // Route for searching
 Route::get('/adminpage/search', [FileController::class,'search'])->name('search');
 
+Route::get('/userpage/search', [FileController::class,'search'])->name('search2');
+
+
 // Route for filtering
 Route::get('/adminpage/filter', [FileController::class,'filter'])->name('filter');
-
-Route::get('/changePassword', [UserController::class,'userChangePassword']);
-
-Route::get('/userManagement', [FIleController::class,'userManagement']);
-
-//Route Filter and Seacrh di user
-Route::get('/userpage/filter', [UserController::class,'filterUser'])->name('filter');
-Route::get('/userpage/search', [UserController::class,'searchUser'])->name('search');
+Route::get('/userpage/search', [FileController::class,'filter2'])->name('filter2');
+Route::get('/usermanagement', [UserController::class,'userManagement'])->name('showuser');
