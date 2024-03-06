@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 class Usercontroller extends Controller
 {
@@ -67,6 +68,38 @@ class Usercontroller extends Controller
     {
         $userFiles = User::all();
         return view('userManagement', compact('userFiles'));
+    }
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+
+        return Redirect('login');
+    }
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('showuser')->with('success', 'User deleted successfully');
+        } else {
+            // If the user is not found, return an error message
+            return redirect()->route('showuser')->with('error', 'User not found');
+        }
+    }
+    
+    public function switchRole($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return Redirect::route('showuser')->with('error', 'User not found');
+        }
+
+        $user->role = ($user->role === 'admin') ? 'user' : 'admin';
+        $user->save();
+
+        return Redirect::route('showuser')->with('success', 'User role switched successfully');
     }
 
 }

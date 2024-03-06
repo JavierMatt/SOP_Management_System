@@ -29,7 +29,7 @@ Route::post('/upload', [FileController::class, 'upload'])->middleware('admin')->
 
 // Route::get('/download{fileid}', [FileController::class, 'downloadfile'])->name('download');
 Route::get('/download/{fileid}', [FileController::class, 'download'])->name('file.download');
-// Route::get('/toversioning/{filename}/{catid}',[FileController::class,'toVersioning'])->name('toversioning');
+
 
 Route::get('/versioning/{fileid}',[FileController::class,'toVersioning'])->middleware('admin')->name('toversioning');
 Route::get('/update/{fileid}',[FileController::class,'toUpdate'])->middleware('admin')->name('toUpdate');
@@ -38,10 +38,15 @@ Route::post('/update/{fileid}',[FileController::class,'update'])->middleware('ad
 // Route for searching
 Route::get('/adminpage/search', [FileController::class,'search'])->name('search');
 
-Route::get('/userpage/search', [FileController::class,'search'])->name('search2');
+Route::get('/userpage/search', [Filecontroller::class, 'search2'])->name('search2');
+
 
 
 // Route for filtering
 Route::get('/adminpage/filter', [FileController::class,'filter'])->name('filter');
 Route::get('/userpage/search', [FileController::class,'filter2'])->name('filter2');
 Route::get('/usermanagement', [UserController::class,'userManagement'])->name('showuser');
+
+Route::get('/adminpage/logout', [UserController::class,'logout'])->name('logout');
+Route::delete('/usermanagement/{id}', [UserController::class, 'deleteUser'])->name('user.delete');
+Route::get('/usermanagement/{id}', [UserController::class, 'switchRole'])->name('user.switchRole');

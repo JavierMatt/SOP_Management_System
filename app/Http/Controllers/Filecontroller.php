@@ -33,7 +33,7 @@ class Filecontroller extends Controller
             $pdfFile->category = Category::find($pdfFile->catid);
         }
 
-        return view('adminpage', compact('pdfFiles', 'categories'));
+        return view('userpage', compact('pdfFiles', 'categories'));
     }
     public function showFileAdmin()
     {
@@ -64,6 +64,9 @@ class Filecontroller extends Controller
             'category' => 'required',
             'version' => 'required|integer',
             'path' => 'required|file|mimes:pdf|max:3072', // Max size 3MB (3072 KB)
+        ],
+        [
+            'path.max' => 'The file size must not exceed 3MB.',
         ]);
 
         $file = new File();
@@ -163,26 +166,25 @@ class Filecontroller extends Controller
     }
     
     public function search2(Request $request)
-{
-    $searchTerm = $request->query('search');
-
-    // Select records with the highest version number for each filename and catid
-    $pdfFiles = File::select('files.*')
-        ->whereIn('fileid', function ($query) use ($searchTerm) {
-            $query->selectRaw('MAX(fileid)')
-                ->from('files')
-                ->where('filename', 'like', '%' . $searchTerm . '%')
-                ->groupBy('filename', 'catid');
-        })
-        ->orderBy('filename')
-        ->orderBy('version', 'desc')
-        ->get();
-
-    $categories = Category::all();
-
-    return view('adminpage', compact('pdfFiles', 'categories'));
-}
-
+    {
+        $searchTerm = $request->query('search');
+    
+        // Select records with the highest version number for each filename and catid
+        $pdfFiles = File::select('files.*')
+            ->whereIn('fileid', function ($query) use ($searchTerm) {
+                $query->selectRaw('MAX(fileid)')
+                    ->from('files')
+                    ->where('filename', 'like', '%' . $searchTerm . '%')
+                    ->groupBy('filename', 'catid');
+            })
+            ->orderBy('filename')
+            ->orderBy('version', 'desc')
+            ->get();
+    
+        $categories = Category::all();
+    
+        return view('userpage', compact('pdfFiles', 'categories'));
+    }
 
     public function filter(Request $request)
     {

@@ -11,22 +11,23 @@
                 <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request()->input('search') }}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-        
-            <form class="d-flex" action="{{ route('filter2') }}" method="GET" id="filterForm">
-    <select id="category" name="category" onchange="submitForm()">
-        <option value="" disabled selected>Select Category</option> <!-- Placeholder -->
-        <option value="">All Category</option>
-        @foreach($categories as $category)
-            <option value="{{ $category->catid }}">{{ $category->dept }}</option>
-        @endforeach
-    </select>
-</form>
 
-<script>
-    function submitForm() {
-        document.getElementById('filterForm').submit();
-    }
-</script>
+
+            <form class="d-flex" action="{{ route('filter2') }}" method="GET" id="filterForm">
+                <select id="category" name="category" onchange="submitForm()">
+                    <option value="" disabled selected>Select Category</option> <!-- Placeholder -->
+                    <option value="">All Category</option>
+                    @foreach($categories as $category)
+                    <option value="{{ $category->catid }}">{{ $category->dept }}</option>
+                    @endforeach
+                </select>
+            </form>
+
+            <script>
+                function submitForm() {
+                    document.getElementById('filterForm').submit();
+                }
+            </script>
 
 
 

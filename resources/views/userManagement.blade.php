@@ -119,6 +119,7 @@
                     <td class="px-6 py-4">
                         {{$userFile->role}}
                     </td>
+
                     <!-- Alert -->
                     <div id="deleteModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
                         <div class="relative p-4 w-full max-w-md h-full md:h-auto">
@@ -151,6 +152,12 @@
                         <a href="#" data-modal-target="deleteModal" id="deleteIcon">
                             <i class="fa-solid fa-trash fa-xl" style="color: #000000;"></i>
                         </a>
+                        <form action="{{ route('user.delete', ['id' => $userFile->userid]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+                        <a href="{{ route('user.switchRole', ['id' => $userFile->userid]) }}">Switch Role</a>
                     </td>
 
                     <!-- handling delete icon click -->
