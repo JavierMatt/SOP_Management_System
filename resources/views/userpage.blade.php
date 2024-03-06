@@ -7,14 +7,14 @@
     <div class="dropdownSeacrh mt-5">
         <div class="flex mt-5">
             <div class="search mr-2">
-                <form class="flex" action="{{ route('search') }}" method="GET">
+                <form class="flex" action="{{ route('searchUser') }}" method="GET">
                     <input class="w-80 p-2 border border-gray-300 rounded-l-lg focus:outline-none" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request()->input('search') }}">
                     <button class="p-2 bg-white border border-gray-300 rounded-r-lg focus:outline-none hover:bg-red-800 hover:text-white" type="submit">Search</button>
                 </form>
             </div>
         
             <div class="dropdown ml-auto">
-                <form class="flex" action="{{ route('filter') }}" method="GET" id="filterForm">
+                <form class="flex" action="{{ route('filterUser') }}" method="GET" id="filterForm">
                     <div class="relative flex-auto">
                         <select id="category" name="category" onchange="submitForm()" class="w-80 mr-10 block py-2.5 px-2 border border-gray-300 bg-white text-sm font-medium rounded">
                             <option value="" disabled selected>Select Category</option> <!-- Placeholder -->

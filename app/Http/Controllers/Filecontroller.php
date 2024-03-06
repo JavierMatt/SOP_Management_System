@@ -169,6 +169,6 @@ class Filecontroller extends Controller
         }
 
         $categories = Category::all();
-        return view('adminpage', compact('pdfFiles', 'categories'));
+        return view('userpage', compact('pdfFiles', 'categories'));
     }
 }
