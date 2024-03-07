@@ -6,7 +6,7 @@
     <div class="flex flex-wrap justify-between">
         <!-- Kiri -->
         <div class="w-full sm:w-2/5 mt-10 sm:mx-auto sm:max-w-sm bg-white p-4 opacity-90 rounded-xl">
-            <h1 class="text-3xl font-bold text-black">Upload Document</h1>
+            <h1 class="text-3xl font-bold text-black">Update Document</h1>
             <div class="mt-10">
                 <label for="filename" class="text-xl font-semibold mb-2">File Name</label>
                 <input id="filename" name="filename" type="text" autocomplete="title" placeholder="Input Document title" value="{{ $pdfFile->filename }}" readonly required class="block w-full rounded-md py-1.5 text-gray-600 p-2 border-gray-300 border placeholder:text-gray-400 sm:text-sm sm:leading-6">
@@ -45,6 +45,17 @@
     </div>
 
     <!-- Submit -->
+    <div class="error flex justify-center mt-5">
+        @if ($errors->any())
+            <div class="bg-red-500 text-white p-4 rounded">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
     <div class="flex justify-center mt-20">
         <button type="submit" class="flex justify-center w-full sm:w-2/5 rounded-md bg-red-800 px-3 py-1.5 text-sm font-bold leading-6 text-white shadow-sm hover:bg-rose-900  hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             SUBMIT

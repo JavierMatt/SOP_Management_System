@@ -1,9 +1,11 @@
 @extends('layouts.templateUser')
 @section('content')
 
-<div class="ml-14 mt-5">
-    <h1 class="text-4xl font-bold text-lack">Dashboard</h1>
-
+<div class="ml-14 mt-10">
+    <div class="flex justify-between items-center mb-10">
+        <h1 class="text-4xl font-bold text-lack">Dashboard</h1>
+    </div>
+  
     <div class="dropdownSeacrh mt-5">
         <div class="flex mt-5">
             <div class="search mr-2">
@@ -16,7 +18,7 @@
             <div class="dropdown ml-auto">
                 <form class="flex" action="{{ route('filterUser') }}" method="GET" id="filterForm">
                     <div class="relative flex-auto">
-                        <select id="category" name="category" onchange="submitForm()" class="w-80 mr-10 block py-2.5 px-2 border border-gray-300 bg-white text-sm font-medium rounded">
+                        <select id="category" name="category" onchange="submitForm()" class="w-80 mr-10 block py-2.5 px-2 border border-gray-300 bg-white text-sm font-medium rounded text-black">
                             <option value="" disabled selected>Select Category</option> <!-- Placeholder -->
                             <option value="">All Category</option>
                             @foreach($categories as $category)
@@ -98,7 +100,37 @@
                 @endforeach
             </tbody>
         </table>
-    </div>  
+    </div> 
+    <div class="pagination flex flex-col items-center mt-10">
+        <!-- Help text -->
+        <span class="text-sm text-black">
+            Showing <span class="font-semibold text-red-800">{{ $pdfFiles->firstItem() }}</span> to <span class="font-semibold text-red-800">{{ $pdfFiles->lastItem() }}</span> of <span class="font-semibold text-red-800">{{ $pdfFiles->total() }}</span> Entries
+        </span>
+        
+        <!-- Tailwind Paginator Buttons -->
+        <div class="inline-flex mt-2 xs:mt-0">
+            @if ($pdfFiles->onFirstPage())
+                <button class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-300 rounded-l-lg cursor-not-allowed" disabled>
+                    Prev
+                </button>
+            @else
+                <a href="{{ $pdfFiles->previousPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-800 rounded-l-lg hover:bg-black">
+                    Prev
+                </a>
+            @endif
+    
+            @if ($pdfFiles->hasMorePages())
+                <a href="{{ $pdfFiles->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-800 border-0 border-s border-gray-700 rounded-r-lg hover:bg-white hover:text-red-800 hover:border-s hover:border-black">
+                    Next
+                </a>
+            @else
+                <button class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-300 rounded-r-lg cursor-not-allowed" disabled>
+                    Next
+                </button>
+            @endif
+        </div> 
 </div>
+
+{{-- {{ $pdfFiles->links() }} --}}
 
 @endsection

@@ -1,14 +1,18 @@
 <div class="navbar">
   <nav class="bg-white">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <a href="#" class="flex items-center mr-8 rtl:space-x-reverse">
           <img src="{{ asset('images/logoCimb.png') }}" class="h-8" alt="Flowbite Logo" />
           <h2 class="text-xl font-bold text-rose-800 pl-5">| Standar Operational Prosedur Management System</h2>
       </a>
-      <div class="profile flex-col items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
+      <div class="flex typing w- ml-40 max-w-52">
+        <h1 class="items-center flex-col animate-typing overflow-hidden whitespace-nowrap text-sm md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse text-red-700 font-bold">{{ $greeting }}, {{Auth::user()->username}}!</h1>
+      </div>
+
+      <div class="profile flex-col relative max-w-20 items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse mr-10">
         <button type="button" class="flex text-sm bg-red-800 rounded-full md:me-0 focus:ring-4 focus:ring-red-800" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
           <span class="sr-only">Open user menu</span>
-          <img class="w-8 h-8 rounded-full" src="{{ asset('images/profile.png') }}" alt="user photo">
+          <img class="w-10 h-10 rounded-full" src="{{ asset('images/profile.png') }}" alt="user photo">
         </button>
         <!-- Dropdown menu -->
         <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow absolute right-0 mt-2 ml-10 w-48" id="user-dropdown">
@@ -26,7 +30,7 @@
               </a>
             </li>
             <li>
-              <a href="{{ url('/') }}" class="block px-4 py-2 text-sm text-black hover:text-red-800 hover:font-bold">
+              <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-black hover:text-red-800 hover:font-bold">
                 <span class="flex items-center">
                   <i class="fa-solid fa-right-from-bracket mr-2" style="color: #000000;"></i>
                   Logout

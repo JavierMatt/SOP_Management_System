@@ -150,8 +150,36 @@
                 </tbody>
             </table>
         </div>  
+        <div class="pagination flex flex-col items-center mt-10">
+            <!-- Help text -->
+            <span class="text-sm text-black">
+                Showing <span class="font-semibold text-red-800">{{ $pdfFiles->firstItem() }}</span> to <span class="font-semibold text-red-800">{{ $pdfFiles->lastItem() }}</span> of <span class="font-semibold text-red-800">{{ $pdfFiles->total() }}</span> Entries
+            </span>
+            
+            <!-- Tailwind Paginator Buttons -->
+            <div class="inline-flex mt-2 xs:mt-0">
+                @if ($pdfFiles->onFirstPage())
+                    <button class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-300 rounded-l-lg cursor-not-allowed" disabled>
+                        Prev
+                    </button>
+                @else
+                    <a href="{{ $pdfFiles->previousPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-800 rounded-l-lg hover:bg-black">
+                        Prev
+                    </a>
+                @endif
+        
+                @if ($pdfFiles->hasMorePages())
+                    <a href="{{ $pdfFiles->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-800 border-0 border-s border-gray-700 rounded-r-lg hover:bg-white hover:text-red-800 hover:border-s hover:border-black">
+                        Next
+                    </a>
+                @else
+                    <button class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-300 rounded-r-lg cursor-not-allowed" disabled>
+                        Next
+                    </button>
+                @endif
+            </div>
+        </div>
     </div>   
-
 
     <div class="plusButton">
         <a href="{{ url('/upload') }}" class="fixed bottom-4 right-4">
@@ -159,9 +187,9 @@
                 <i class="fa-solid fa-plus text-white"></i>
             </div>
         </a>
-    </div>
-
+    </div>    
  </div>
-
- {{-- {{ $pdfFiles->links() }} --}}
+ 
+    {{-- {{ $pdfFiles->links() }} --}}
+ 
 @endsection
