@@ -180,6 +180,15 @@ class Filecontroller extends Controller
 
         return view('userpage', compact('pdfFiles', 'categories'));
     }
+    public function searchManagement(Request $request)
+    {
+        $searchTerm = $request->query('search');
+
+        $userFiles = User::where('username', 'like', '%' . $searchTerm . '%')->get();
+        $users = User::all();
+
+        return view('userManagement', compact('userFiles', 'users'));
+    }
 
     //filter
     public function filterAdmin(Request $request)
@@ -210,15 +219,6 @@ class Filecontroller extends Controller
         return view('userpage', compact('pdfFiles', 'categories'));
     }
     
-    public function searchManagement(Request $request)
-    {
-        $searchTerm = $request->query('search');
-
-        $userFiles = User::where('username', 'like', '%' . $searchTerm . '%')->get();
-        $users = User::all();
-
-        return view('userManagement', compact('userFiles', 'users'));
-    }
     public function filterManagement(Request $request)
     {
         $roleId = $request->query('role');

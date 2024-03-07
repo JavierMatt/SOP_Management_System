@@ -71,36 +71,7 @@ class Usercontroller extends Controller
         return view('userManagement', compact('userFiles'));
     }
 
-    public function searchUser(Request $request)
-    {
-        $searchTerm = $request->query('search');
 
-        $pdfFiles = File::where('filename', 'like', '%' . $searchTerm . '%')->get();
-        $categories = Category::all();
-
-        return view('userpage', compact('pdfFiles', 'categories'));
-    }
-
-    public function filterUser(Request $request)
-    {
-        $categoryId = $request->query('category');
-
-        if ($categoryId) {
-            $pdfFiles = File::where('catid', $categoryId)->get();
-        } else {
-            $pdfFiles = File::all();
-        }
-
-        $categories = Category::all();
-        return view('userpage', compact('pdfFiles', 'categories'));
-    }
-    public function logout()
-    {
-        Session::flush();
-        Auth::logout();
-
-        return Redirect()->back();
-    }
     public function deleteUser($id)
     {
         $user = User::find($id);
@@ -112,7 +83,7 @@ class Usercontroller extends Controller
             return redirect()->route('showuser')->with('error', 'User not found');
         }
     }
-    
+
     public function switchRole($id)
     {
         $user = User::find($id);
@@ -126,6 +97,13 @@ class Usercontroller extends Controller
 
         return redirect('userManagement');
         
+    }
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+
+        return Redirect()->back();
     }
 
     public function showForm(){
