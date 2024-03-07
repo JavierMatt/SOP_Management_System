@@ -160,7 +160,7 @@ class Filecontroller extends Controller
         $file->date = now();
 
         $file->save();
-        
+        echo('Done');
         return redirect()->route('adminpage', ['fileid' => $fileid])->with('success', 'File uploaded successfully');
     }
     public function toUpdate($fileid)
@@ -225,6 +225,16 @@ class Filecontroller extends Controller
         return view('userpage', compact('pdfFiles', 'categories', 'greeting'));
     }
 
+    public function searchManagement(Request $request)
+    {
+        $searchTerm = $request->query('search');
+
+        $userFiles = User::where('username', 'like', '%' . $searchTerm . '%')->get();
+        $users = User::all();
+
+        return view('userManagement', compact('userFiles', 'users'));
+    }
+
     public function filter(Request $request)
     {
         $categoryId = $request->query('category');
@@ -278,16 +288,6 @@ class Filecontroller extends Controller
 
         $categories = Category::all();
         return view('userpage', compact('pdfFiles', 'categories', 'greeting'));
-    }
-
-    public function searchManagement(Request $request)
-    {
-        $searchTerm = $request->query('search');
-
-        $userFiles = User::where('username', 'like', '%' . $searchTerm . '%')->get();
-        $users = User::all();
-
-        return view('userManagement', compact('userFiles', 'users'));
     }
 
     public function filterManagement(Request $request)

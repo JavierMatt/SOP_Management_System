@@ -19,9 +19,9 @@
                 <div> 
 
                         <h2 class="font-medium text-xs md:text-sm text-center text-white">
-                            Oliver Sebastian
+                            {{Auth::user()->username}}
                         </h2>
-                        <p class="text-xs text-white text-center">Super Admin</p>
+                        <p class="text-xs text-white text-center">{{Auth::user()->role}}</p>
                         </div>
                     </div>
         
@@ -41,7 +41,7 @@
                             <span class="">Change Password</span>
                         </a>
         
-                        <a href="{{ url('/') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
+                        <a href="{{ route('logout') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
                             <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
                             <span class="">Logout</span>
                         </a>

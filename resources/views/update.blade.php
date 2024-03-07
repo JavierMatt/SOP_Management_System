@@ -1,6 +1,13 @@
 @extends('layouts.templateAdmin')
 @section('content')
 
+{{-- @if ($errors->any()){
+    <div class="alert alert-danger">
+        {{$error}}
+    </div>
+}
+@endif --}}
+
 <form action="{{ route('update',['fileid' => $pdfFile->fileID]) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="flex flex-wrap justify-between">
@@ -64,15 +71,10 @@
 </form>
 
 <script>
-    function updateFileSizeLabel(input) {
-        const fileSizeLabel = document.getElementById('file_size_label');
-        if (input.files.length > 0) {
-            const fileSize = input.files[0].size; // File size in bytes
-            const fileSizeInMB = fileSize / (1024 * 1024); // Convert to MB
-            fileSizeLabel.textContent = `${fileSizeInMB.toFixed(2)} MB`;
-        } else {
-            fileSizeLabel.textContent = ''; // Clear the label if no file selected
-        }
+    document.getElementById('path').addEventListener('change', function()) {
+        var fileSize = this.files[0].size;
+        var fileSizeLabel = (fileSize / (1024 * 1024)).toFixed(2) + ' MB';
+        document.getElementById('file_size_label').textContent = fileSizeLabel;
     }
 </script>
 @endsection
