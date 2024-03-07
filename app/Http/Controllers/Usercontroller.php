@@ -89,7 +89,7 @@ class Usercontroller extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            return Redirect::route('userManagement')->with('error', 'User not found');
+            return redirect()->route('userManagement')->with('error', 'User not found');
         }
 
         $user->role = ($user->role === 'admin') ? 'user' : 'admin';

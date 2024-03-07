@@ -30,18 +30,20 @@ Route::post('/upload', [FileController::class, 'upload'])->middleware('admin')->
 
 // Route::get('/download{fileid}', [FileController::class, 'downloadfile'])->name('download');
 Route::get('/download/{fileid}', [FileController::class, 'download'])->name('file.download');
-// Route::get('/toversioning/{filename}/{catid}',[FileController::class,'toVersioning'])->name('toversioning');
+// Route::get('/toversioning/{filename}/{catid}',eController::class,'toVersioning'])->name('toversioning');
 
 Route::get('/versioning/{fileid}',[FileController::class,'toVersioning'])->name('toversioning');
 Route::get('/update/{fileid}',[FileController::class,'toUpdate'])->middleware('admin')->name('toUpdate');
 Route::post('/update/{fileid}',[FileController::class,'update'])->middleware('admin')->name('update');
 
 // Route for searching
-Route::get('/adminpage/search', [FileController::class,'searchAdmin'])->name('searchAdmin');
+Route::get('/adminpage/search', [FileController::class,'search'])->name('search');
+// Route::get('/userpage/search', [Filecontroller::class, 'search2'])->name('search2');
 Route::get('/userpage/search', [FileController::class,'searchUser'])->name('searchUser');
 
 // Route for filtering
-Route::get('/adminpage/filter', [FileController::class,'filterAdmin'])->name('filterAdmin');
+Route::get('/adminpage/filter', [FileController::class,'filter'])->name('filter');
+// Route::get('/userpage/search', [FileController::class,'filter2'])->name('filter2');
 Route::get('/userpage/filter', [FileController::class,'filterUser'])->name('filterUser');
 
 // ROute for userManagement
