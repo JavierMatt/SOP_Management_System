@@ -44,13 +44,10 @@ Route::get('/userpage/search', [Filecontroller::class, 'search2'])->name('search
 
 // Route for filtering
 Route::get('/adminpage/filter', [FileController::class,'filter'])->name('filter');
-<<<<<<< HEAD
-
-=======
 Route::get('/userpage/search', [FileController::class,'filter2'])->name('filter2');
 Route::get('/usermanagement', [UserController::class,'userManagement'])->name('showuser');
 
 Route::get('/adminpage/logout', [UserController::class,'logout'])->name('logout');
 Route::delete('/usermanagement/{id}', [UserController::class, 'deleteUser'])->name('user.delete');
 Route::get('/usermanagement/{id}', [UserController::class, 'switchRole'])->name('user.switchRole');
->>>>>>> 4b6796634f756ea5c197a781409b0e56ab933a66
+
