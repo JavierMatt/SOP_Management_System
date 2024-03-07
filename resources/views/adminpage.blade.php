@@ -18,10 +18,10 @@
                         <img src="{{ asset('images/profile.png') }}" alt="Avatar user" class="w-10 md:w-16 rounded-full mx-auto"/>
                     <div> 
 
-                            <h2 class="font-medium text-xs md:text-sm text-center text-white">
+                            <h1 class="font-medium text-xl md:text-xl text-center text-white">
                                 {{Auth::user()->username}}
-                            </h2>
-                            <p class="text-xs text-white text-center">{{Auth::user()->role}}</p>
+                            </h1>
+                            <p class="text text-white text-center">{{Auth::user()->role}}</p>
                             </div>
                         </div>
             
@@ -35,8 +35,13 @@
                                 <i class="fa-solid fa-user" style="color: #ffffff;"></i>
                                 <span class="">User Management</span>
                             </a>
-            
-                            <a href="{{ url('/') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
+
+                            <a href="{{ url('/changePass') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
+                                <i class="fa-solid fa-key" style="color: #ffffff;"></i>
+                                <span class="">Change Password</span>
+                            </a>
+
+                            <a href="{{ route('logout') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
                                 <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
                                 <span class="">Logout</span>
                             </a>
@@ -51,14 +56,14 @@
         {{-- seacrh and filtering --}}
         <div class="flex mt-5">
             <div class="search mr-2">
-                <form class="flex" action="{{ route('search') }}" method="GET">
+                <form class="flex" action="{{ route('searchAdmin') }}" method="GET">
                     <input class="w-80 p-2 border border-gray-300 rounded-l-lg focus:outline-none" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request()->input('search') }}">
                     <button class="p-2 bg-white border border-gray-300 rounded-r-lg focus:outline-none hover:bg-red-800 hover:text-white" type="submit">Search</button>
                 </form>
             </div>
         
             <div class="dropdown ml-auto">
-                <form class="flex" action="{{ route('filter') }}" method="GET" id="filterForm">
+                <form class="flex" action="{{ route('filterAdmin') }}" method="GET" id="filterForm">
                     <div class="relative flex-auto">
                         <select id="category" name="category" onchange="submitForm()" class="w-80 block py-2.5 px-2 border border-gray-300 bg-white text-sm font-medium rounded">
                             <option value="" disabled selected>Select Category</option> <!-- Placeholder -->
@@ -82,7 +87,7 @@
             }
         </script>
 
-        <div class="tabel relative overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg mt-5">
+        <div class="tabel relative overflow-auto overflow-y-auto shadow-md sm:rounded-lg mt-5 max-h-96">
             <table class="w-full text-sm text-center text-black">
                 <thead class="text-xs text-white uppercase bg-red-800 sticky top-0">
                         <tr>

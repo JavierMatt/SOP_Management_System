@@ -39,7 +39,7 @@
             </div>
                 <div class="mb-6">
                     <label class="block text-xl text-black" for="version">Version</label>
-                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg py-2 px-3" type="number" id="version" name="version" required>
+                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg py-2 px-3" type="number" id="version" name="version" value="{{ $latestVersion+1 }}" required readonly>
                 </div>
         </div>
     </div>

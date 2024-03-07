@@ -18,7 +18,7 @@
           </div>
           <ul class="py-2" aria-labelledby="user-menu-button">
             <li>
-              <a href="{{ url('/changePassword') }}" class="block px-4 py-2 text-sm text-black hover:text-red-800 hover:font-bold">
+              <a href="{{ url('/changePass') }}" class="block px-4 py-2 text-sm text-black hover:text-red-800 hover:font-bold">
                 <span class="flex items-center">
                   <i class="fa-solid fa-key mr-2" style="color: #000000;"></i>
                   Change Password

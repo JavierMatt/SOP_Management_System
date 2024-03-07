@@ -33,7 +33,7 @@ class Filecontroller extends Controller
             $pdfFile->category = Category::find($pdfFile->catid);
         }
 
-        return view('adminpage', compact('pdfFiles', 'categories'));
+        return view('userpage', compact('pdfFiles', 'categories'));
     }
     public function showFileAdmin()
     {
@@ -67,14 +67,14 @@ class Filecontroller extends Controller
         $validatedData = $request->validate([
             'filename' => 'required|min:8|regex:/^SOP_/',
             'category' => 'required',
-            'version' => 'required|integer',
+            // 'version' => 'required|integer',
             'path' => 'required|file|mimes:pdf|max:3072', // Max size 3MB (3072 KB)
         ]);
 
         $file = new File();
         $file->filename = $validatedData['filename'];
         $file->catid = $validatedData['category'];
-        $file->version = $validatedData['version'];
+        $file->version = 1;
 
         $validatedData['path'] = $request->file('path')->store('pdf-SOP');
         $size = Storage::size($validatedData['path']);
@@ -116,18 +116,26 @@ class Filecontroller extends Controller
     }
     public function update(Request $request, $fileid)
     {
-     
+        // dd($request);
+        // return $request ->file('path')->store('pdf-SOP');
         $validatedData = $request->validate([
-            'filename' => 'required',
+            'filename' => 'required|min:8|regex:/^SOP_/',
             'category' => 'required',
-            'version' => 'required|integer',
+            // 'version' => 'required|integer',
             'path' => 'required|file|mimes:pdf|max:3072', // Max size 3MB (3072 KB)
         ]);
+
+        $pdfFile = File::with('category', 'user')->findOrFail($fileid);
+
+        $latestVersion = File::where('filename', $pdfFile->filename)
+            ->where('catid', $pdfFile->catid)
+            ->orderByDesc('fileid')
+            ->first()->version;
 
         $file = new File();
         $file->filename = $validatedData['filename'];
         $file->catid = $validatedData['category'];
-        $file->version = $validatedData['version'];
+        $file->version = $latestVersion+1 ;
 
 
         $validatedData['path'] = $request->file('path')->store('pdf-SOP');
@@ -143,40 +151,24 @@ class Filecontroller extends Controller
     }
     public function toUpdate($fileid)
     {
-        $pdfFile = File::findOrFail($fileid);
-        return view('update', compact('pdfFile'));
+        $pdfFile = File::with('category', 'user')->findOrFail($fileid);
+
+        $latestVersion = File::where('filename', $pdfFile->filename)
+            ->where('catid', $pdfFile->catid)
+            ->orderByDesc('fileid')
+            ->first()->version;
+
+        return view('update', compact('pdfFile', 'latestVersion'));
     }
+
+    //search
     public function searchAdmin(Request $request)
     {
         $searchTerm = $request->query('search');
-    
-        // Select records with the highest version number for each filename and catid
-        $pdfFiles = File::select('files.*')
-            ->whereIn('fileid', function ($query) use ($searchTerm) {
-                $query->selectRaw('MAX(fileid)')
-                    ->from('files')
-                    ->where('filename', 'like', '%' . $searchTerm . '%')
-                    ->groupBy('filename', 'catid');
-            })
-            ->orderBy('filename')
-            ->orderBy('version', 'desc')
-            ->get();
-    
-    
-        // Select records with the highest version number for each filename and catid
-        $pdfFiles = File::select('files.*')
-            ->whereIn('fileid', function ($query) use ($searchTerm) {
-                $query->selectRaw('MAX(fileid)')
-                    ->from('files')
-                    ->where('filename', 'like', '%' . $searchTerm . '%')
-                    ->groupBy('filename', 'catid');
-            })
-            ->orderBy('filename')
-            ->orderBy('version', 'desc')
-            ->get();
-    
+
+        $pdfFiles = File::where('filename', 'like', '%' . $searchTerm . '%')->get();
         $categories = Category::all();
-    
+
         return view('adminpage', compact('pdfFiles', 'categories'));
     }
     public function searchUser(Request $request)
@@ -189,6 +181,7 @@ class Filecontroller extends Controller
         return view('userpage', compact('pdfFiles', 'categories'));
     }
 
+    //filter
     public function filterAdmin(Request $request)
     {
         $categoryId = $request->query('category');
@@ -207,60 +200,37 @@ class Filecontroller extends Controller
     {
         $categoryId = $request->query('category');
 
-        // Select records with the highest version number for each filename and catid
-        $pdfFiles = File::select('files.*')
-            ->whereIn('fileid', function ($query) use ($categoryId) {
-                $query->selectRaw('MAX(fileid)')
-                    ->from('files')
-                    ->groupBy('filename', 'catid');
-
-                if ($categoryId) {
-                    $query->where('catid', $categoryId);
-                }
-            })
-            ->orderBy('filename')
-            ->orderBy('version', 'desc')
-            ->get();
-        // Select records with the highest version number for each filename and catid
-        $pdfFiles = File::select('files.*')
-            ->whereIn('fileid', function ($query) use ($categoryId) {
-                $query->selectRaw('MAX(fileid)')
-                    ->from('files')
-                    ->groupBy('filename', 'catid');
-
-                if ($categoryId) {
-                    $query->where('catid', $categoryId);
-                }
-            })
-            ->orderBy('filename')
-            ->orderBy('version', 'desc')
-            ->get();
+        if ($categoryId) {
+            $pdfFiles = File::where('catid', $categoryId)->get();
+        } else {
+            $pdfFiles = File::all();
+        }
 
         $categories = Category::all();
-
-        return view('adminpage', compact('pdfFiles', 'categories'));
-    }
-    public function filter2(Request $request)
-    {
-        $categoryId = $request->query('category');
-
-        // Select records with the highest version number for each filename and catid
-        $pdfFiles = File::select('files.*')
-            ->whereIn('fileid', function ($query) use ($categoryId) {
-                $query->selectRaw('MAX(fileid)')
-                    ->from('files')
-                    ->groupBy('filename', 'catid');
-
-                if ($categoryId) {
-                    $query->where('catid', $categoryId);
-                }
-            })
-            ->orderBy('filename')
-            ->orderBy('version', 'desc')
-            ->get();
-
-        $categories = Category::all();
-
         return view('userpage', compact('pdfFiles', 'categories'));
     }
+    
+    public function searchManagement(Request $request)
+    {
+        $searchTerm = $request->query('search');
+
+        $userFiles = User::where('username', 'like', '%' . $searchTerm . '%')->get();
+        $users = User::all();
+
+        return view('userManagement', compact('userFiles', 'users'));
+    }
+    public function filterManagement(Request $request)
+    {
+        $roleId = $request->query('role');
+
+        if ($roleId) {
+            $userFiles = User::where('role', $roleId)->get();
+        } else {
+            $userFiles = User::all();
+        }
+
+        $users = User::all();
+        return view('userManagement', compact('userFiles', 'users'));
+    }
+
 }

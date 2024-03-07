@@ -60,18 +60,101 @@ class Usercontroller extends Controller
         // Redirect or return a response
         return redirect()->route('login')->with('success', 'User created successfully');
     }
-    public function showuser()
-    {
-        $users = User::all();
-        return view('usermanagement',compact('users'));
-    }
+
+    // public function userChangePassword() {
+    //     return view("userChangePassword");
+    // }
+
     public function userManagement()
     {
         $userFiles = User::all();
         return view('userManagement', compact('userFiles'));
     }
-    public function userChangePassword() {
-        return view("userChangePassword");
+
+    public function searchUser(Request $request)
+    {
+        $searchTerm = $request->query('search');
+
+        $pdfFiles = File::where('filename', 'like', '%' . $searchTerm . '%')->get();
+        $categories = Category::all();
+
+        return view('userpage', compact('pdfFiles', 'categories'));
     }
 
+    public function filterUser(Request $request)
+    {
+        $categoryId = $request->query('category');
+
+        if ($categoryId) {
+            $pdfFiles = File::where('catid', $categoryId)->get();
+        } else {
+            $pdfFiles = File::all();
+        }
+
+        $categories = Category::all();
+        return view('userpage', compact('pdfFiles', 'categories'));
+    }
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+
+        return Redirect()->back();
+    }
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('showuser')->with('success', 'User deleted successfully');
+        } else {
+            // If the user is not found, return an error message
+            return redirect()->route('showuser')->with('error', 'User not found');
+        }
+    }
+    
+    public function switchRole($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return Redirect::route('userManagement')->with('error', 'User not found');
+        }
+
+        $user->role = ($user->role === 'admin') ? 'user' : 'admin';
+        $user->save();
+
+        return redirect('userManagement');
+        
+    }
+
+    public function showForm(){
+        return view('changePass');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8|confirmed'
+        ]);
+
+        $user = Auth::user();
+
+        // Check if the old password matches the user's current password
+        if (!Hash::check($request->old_password, $user->password)) {
+            return redirect()->back()->with('error', 'Current password is incorrect');
+        }
+
+        // Check if the new password is the same as the current password
+        if (Hash::check($request->new_password, $user->password)) {
+            return redirect()->back()->with('error', 'Can\'t change to current password');
+        }
+
+        // Update the user's password with the new hashed password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->route('login')->with('success', 'Password Changed');
+    }
 }
