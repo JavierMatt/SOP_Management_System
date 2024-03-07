@@ -147,7 +147,7 @@ class Filecontroller extends Controller
         $file->date = now();
 
         $file->save();
-        return redirect()->route('toversioning', ['fileid' => $fileid])->with('success', 'File uploaded successfully');
+        return redirect()->route('adminpage', ['fileid' => $fileid])->with('success', 'File uploaded successfully');
     }
     public function toUpdate($fileid)
     {
@@ -221,6 +221,16 @@ class Filecontroller extends Controller
         $categories = Category::all();
 
         return view('userpage', compact('pdfFiles', 'categories'));
+    }
+
+    public function searchManagement(Request $request)
+    {
+        $searchTerm = $request->query('search');
+
+        $userFiles = User::where('username', 'like', '%' . $searchTerm . '%')->get();
+        $users = User::all();
+
+        return view('userManagement', compact('userFiles', 'users'));
     }
 
     public function filter(Request $request)
