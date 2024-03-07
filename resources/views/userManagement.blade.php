@@ -41,7 +41,7 @@
                                 <span class="">Change Password</span>
                             </a>
             
-                            <a href="{{ url('/') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
+                            <a href="{{ route('logout') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
                                 <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
                                 <span class="">Logout</span>
                             </a>

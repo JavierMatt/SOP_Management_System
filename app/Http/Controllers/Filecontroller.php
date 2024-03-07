@@ -45,7 +45,7 @@ class Filecontroller extends Controller
             })
             ->orderBy('filename')
             ->orderBy('version', 'desc')
-            ->paginate(3);
+            ->paginate(10);
 
         $categories = Category::all();
 
@@ -147,6 +147,7 @@ class Filecontroller extends Controller
         $file->date = now();
 
         $file->save();
+        echo('Done');
         return redirect()->route('adminpage', ['fileid' => $fileid])->with('success', 'File uploaded successfully');
     }
     public function toUpdate($fileid)
@@ -175,7 +176,7 @@ class Filecontroller extends Controller
             })
             ->orderBy('filename')
             ->orderBy('version', 'desc')
-            ->get();
+            ->paginate(10);
     
         $categories = Category::all();
     
@@ -216,7 +217,7 @@ class Filecontroller extends Controller
             })
             ->orderBy('filename')
             ->orderBy('version', 'desc')
-            ->get();
+            ->paginate(10);
         
         $categories = Category::all();
 
@@ -250,7 +251,7 @@ class Filecontroller extends Controller
             })
             ->orderBy('filename')
             ->orderBy('version', 'desc')
-            ->get();
+            ->paginate(10);
 
         $categories = Category::all();
 
@@ -295,7 +296,7 @@ class Filecontroller extends Controller
             })
             ->orderBy('filename')
             ->orderBy('version', 'desc')
-            ->get();
+            ->paginate(10);
 
         $categories = Category::all();
         return view('userpage', compact('pdfFiles', 'categories'));

@@ -133,6 +133,8 @@ class Usercontroller extends Controller
         $user->password = Hash::make($request->new_password);
         $user->save();
 
+        Session::flush();
+        Auth::logout();
         return redirect()->route('login')->with('success', 'Password Changed');
     }
 }

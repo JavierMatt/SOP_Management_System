@@ -1,12 +1,12 @@
 @extends('layouts.templateAdmin')
 @section('content')
 
-@if ($errors->any()){
+{{-- @if ($errors->any()){
     <div class="alert alert-danger">
         {{$error}}
     </div>
 }
-@endif
+@endif --}}
 
 <form action="{{ route('update',['fileid' => $pdfFile->fileID]) }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -60,7 +60,7 @@
 </form>
 
 <script>
-    document.getElementById('path').addEventListener('change', function() {
+    document.getElementById('path').addEventListener('change', function()) {
         var fileSize = this.files[0].size;
         var fileSizeLabel = (fileSize / (1024 * 1024)).toFixed(2) + ' MB';
         document.getElementById('file_size_label').textContent = fileSizeLabel;
