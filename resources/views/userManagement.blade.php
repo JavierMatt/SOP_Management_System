@@ -28,7 +28,7 @@
                         <div id="" class="flex flex-col space-y-2">
                             <a href="{{ url('/adminpage') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white  rounded-md transition duration-150 ease-in-out">
                                 <i class="fas fa-house" style="color: #ffffff;"></i>
-                                <span class="">Dashboard</span>
+                                <span class="">Home</span>
                             </a>
                         
                             <a href="{{ url('/userManagement') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
@@ -57,7 +57,7 @@
         <div class="flex mt-5">
             <div class="search mr-2">
                 <form class="flex" action="{{ route('searchManagement') }}" method="GET">
-                    <input class="w-80 p-2 border border-gray-300 rounded-l-lg focus:outline-none" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request()->input('search') }}">
+                    <input class="w-80 p-2 border border-gray-300 rounded-l-lg focus:outline-none" type="search" name="search" placeholder="Search Name" aria-label="Search" value="{{ request()->input('search') }}">
                     <button class="p-2 bg-white border border-gray-300 rounded-r-lg focus:outline-none hover:bg-red-800 hover:text-white" type="submit">Search</button>
                 </form>
             </div>

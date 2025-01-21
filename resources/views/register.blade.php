@@ -7,9 +7,9 @@
     <h3 class="mt-2 text-sm text-rose-800">Join us to unlock your documents</h3>
 
     <div class="error mt-5">
-        @if(session('error'))
+        @if(session('error-N'))
             <div class="bg-red-500 text-white p-4 rounded">
-                {{ session('error') }}
+                {{ session('error-N') }}
             </div>
         @endif
         @if ($errors->any())

@@ -2,15 +2,15 @@
 @section('content')
 
 <div class="ml-14 mt-10">
-    <div class="flex justify-between items-center mb-10">
-        <h1 class="text-4xl font-bold text-lack">Dashboard</h1>
+    <div class="flex typing max-w-96">
+        <h1 class="items-center flex-col animate-typing overflow-hidden whitespace-nowrap md:order-2 md:space-x-0 rtl:space-x-reverse text-red-700 text-lg font-bold">{{ $greeting }}, {{Auth::user()->username}}!</h1>
     </div>
   
     <div class="dropdownSeacrh mt-5">
         <div class="flex mt-5">
             <div class="search mr-2">
                 <form class="flex" action="{{ route('searchUser') }}" method="GET">
-                    <input class="w-80 p-2 border border-gray-300 rounded-l-lg focus:outline-none" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request()->input('search') }}">
+                    <input class="w-80 p-2 border border-gray-300 rounded-l-lg focus:outline-none" type="search" name="search" placeholder="Search Title" aria-label="Search" value="{{ request()->input('search') }}">
                     <button class="p-2 bg-white border border-gray-300 rounded-r-lg focus:outline-none hover:bg-red-800 hover:text-white" type="submit">Search</button>
                 </form>
             </div>
@@ -120,7 +120,7 @@
             @endif
     
             @if ($pdfFiles->hasMorePages())
-                <a href="{{ $pdfFiles->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-800 border-0 border-s border-gray-700 rounded-r-lg hover:bg-white hover:text-red-800 hover:border-s hover:border-black">
+                <a href="{{ $pdfFiles->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-800 border-0 border-s border-gray-700 rounded-r-lg hover:bg-black">
                     Next
                 </a>
             @else

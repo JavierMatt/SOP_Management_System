@@ -58,7 +58,7 @@ class Usercontroller extends Controller
         $user = User::create($validatedData);
 
         // Redirect or return a response
-        return redirect()->route('login')->with('success', 'User created successfully');
+        return redirect()->route('userManagement')->with('success', 'User created successfully');
     }
 
     // public function userChangePassword() {
@@ -92,6 +92,10 @@ class Usercontroller extends Controller
             return redirect()->route('userManagement')->with('error', 'User not found');
         }
 
+        if($user->username === 'SUPERADMIN'){
+            return redirect()->route('userManagement')->with('error', 'Can not change superadmin role');
+        }
+
         $user->role = ($user->role === 'admin') ? 'user' : 'admin';
         $user->save();
 
@@ -121,7 +125,7 @@ class Usercontroller extends Controller
 
         // Check if the old password matches the user's current password
         if (!Hash::check($request->old_password, $user->password)) {
-            return redirect()->back()->with('error', 'Current password is incorrect');
+            return redirect()->back()->with('error-N', 'Current password is incorrect');
         }
 
         // Check if the new password is the same as the current password

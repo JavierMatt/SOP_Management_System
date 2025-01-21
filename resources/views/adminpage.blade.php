@@ -28,7 +28,7 @@
                         <div id="{{ url('/adminpage') }}" class="flex flex-col space-y-2">
                             <a href="" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white  rounded-md transition duration-150 ease-in-out">
                                 <i class="fas fa-house" style="color: #ffffff;"></i>
-                                <span class="">Dashboard</span>
+                                <span class="">Home</span>
                             </a>
                         
                             <a href="{{ url('/userManagement') }}" class="text-sm font-medium text-white py-2 px-2 hover:bg-gray-500 hover:text-white rounded-md transition duration-150 ease-in-out">
@@ -51,13 +51,13 @@
     </aside>
  
     <div class="p-4 sm:ml-64 flex-grow">
-        <h1 class="text-4xl font-bold text-black">Dashboard</h1>
+        <h1 class="text-4xl font-bold text-black">Home</h1>
         
         {{-- seacrh and filtering --}}
         <div class="flex mt-5">
             <div class="search mr-2">
                 <form class="flex" action="{{ route('search') }}" method="GET">
-                    <input class="w-80 p-2 border border-gray-300 rounded-l-lg focus:outline-none" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request()->input('search') }}">
+                    <input class="w-80 p-2 border border-gray-300 rounded-l-lg focus:outline-none" type="search" name="search" placeholder="Search Title" aria-label="Search" value="{{ request()->input('search') }}">
                     <button class="p-2 bg-white border border-gray-300 rounded-r-lg focus:outline-none hover:bg-red-800 hover:text-white" type="submit">Search</button>
                 </form>
             </div>
@@ -169,7 +169,7 @@
                 @endif
         
                 @if ($pdfFiles->hasMorePages())
-                    <a href="{{ $pdfFiles->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-800 border-0 border-s border-gray-700 rounded-r-lg hover:bg-white hover:text-red-800 hover:border-s hover:border-black">
+                    <a href="{{ $pdfFiles->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-800 border-0 border-s border-gray-700 rounded-r-lg hover:bg-black">
                         Next
                     </a>
                 @else
@@ -184,7 +184,11 @@
     <div class="plusButton">
         <a href="{{ url('/upload') }}" class="fixed bottom-4 right-4">
             <div class="bg-red-800 p-5 rounded-full">
-                <i class="fa-solid fa-plus text-white"></i>
+                <i class="fa-solid fa-plus text-white">
+                    <span>
+                        Add Document
+                    </span>
+                </i>
             </div>
         </a>
     </div>    
