@@ -1,0 +1,7 @@
+html {
+    background-image: url('/images/pwBackground.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%; /* Set tinggi 100% agar gambar latar belakang mencakup seluruh halaman */
+}
